@@ -1,0 +1,15 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'app/helpers/application_helper.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
