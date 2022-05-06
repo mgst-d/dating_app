@@ -1,0 +1,14 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'app/**/*'
+    - 'config.ru'
+    - 'Rakefile'
+    - 'Gemfile'
