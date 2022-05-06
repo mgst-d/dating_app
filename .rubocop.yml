@@ -9,6 +9,6 @@ AllCops:
     - 'bin/**/*'
     - 'db/**/*'
     - 'app/**/*'
-    - 'config.ru'
-    - 'Rakefile'
-    - 'Gemfile'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
