@@ -8,7 +8,7 @@ AllCops:
     - 'config/**/*'
     - 'bin/**/*'
     - 'db/**/*'
-    - 'app/**/*'
+    - 'app/helpers/application_helper.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
