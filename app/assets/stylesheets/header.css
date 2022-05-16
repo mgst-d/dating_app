@@ -1,0 +1,52 @@
+header {
+  margin: 0 auto;
+  min-height: 100px;
+  background: #e8a735;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@keyframes fly {
+  /* 0% {transform: scale(1)} */
+  50% {transform: scale(1.7)}
+  /* 0% {transform: scale(1)} */
+}
+@keyframes slide {
+  /* 0% {transform: rotate(0deg);} */
+  33% {transform: rotate(-5deg);}
+  66% {transform: rotate(7deg);}
+  /* 100% {transform: rotate(0deg);} */
+}
+
+.header-logo img {
+  width: 50px;
+  height: 50px;
+  margin: 0 40px;
+  transform-origin: 50% 100%;
+  animation-name: fly, slide;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+
+
+header nav {
+  flex: 1 1 auto;
+  border: solid black 1px;
+  margin: 0 40px;
+}
+
+header ul {
+  display: flex;
+  justify-content: end;
+  column-gap: 20px;
+}
+
+header li {
+  list-style-type: none;
+  flex: 0 1 150px;
+  border: solid black 1px;
+  display: flex;
+  justify-content: center;
+}

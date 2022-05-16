@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
     <title>DatingApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,6 +17,20 @@
   </head>
 
   <body>
+    <header>
+     <a href=# class="header-logo">
+      <%= image_tag("two-hearts.png", :alt => "hearts logo")%>
+     </a>
+     <nav>
+      <ul>
+       <li>1</li>
+       <li>2</li>
+       <li>3</li>
+      </ul>
+     </nav>
+    </header>
+    <main>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
@@ -21,5 +41,8 @@
       <%= link_to 'Log in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>
     <% end %>
     <%= yield %>
+    </main>
+    <footer>
+    </footer>
   </body>
 </html>

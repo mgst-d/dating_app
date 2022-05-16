@@ -1,0 +1,17 @@
+main {
+  margin: 0 auto;
+  flex: 1 1 auto;
+  background-image: url();
+  background-color: #e2c499;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+#map {
+  margin: 20px;
+  flex: 1 1 200px;
+  height: calc( 100% - 40px);
+  border-radius: 20px;
+  shadow-box: 3px 3px 10px black;
+}
