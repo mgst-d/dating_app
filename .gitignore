@@ -27,5 +27,8 @@
 
 /public/assets
 
+# Ignore Google Cloud key
+/config/secrets/*
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
