@@ -42,7 +42,9 @@
   <p>
     <strong>Foto:</strong>
     <% user.foto.each do |foto| %>
-      <div><%= link_to foto.filename, foto %></div>
+      <%# <div><%= link_to foto.filename, foto %> 
+      <%# </div> %>
+      <div><%= image_tag foto %></div>
     <% end %>
   </p>
 
