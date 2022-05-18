@@ -37,18 +37,21 @@ header nav {
   margin: 0 40px;
 }
 
-header ul {
-  display: flex;
+header {
+
+  ul {
+      display: flex;
   justify-content: end;
   column-gap: 20px;
   margin: 0;
-}
+  }
 
-header li {
+  li {
   list-style-type: none;
   flex: 0 1 150px;
   border: solid black 1px;
   display: flex;
   justify-content: center;
+}
 
 }
