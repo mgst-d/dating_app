@@ -21,6 +21,51 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div>
+    <%= f.label :first_name, style: "display: block" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name, style: "display: block" %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :birth, style: "display: block" %>
+    <%= f.date_field :birth %>
+  </div>
+
+  <div>
+    <%= f.label :sex, style: "display: block" %>
+    <%= f.check_box :sex %>
+  </div>
+
+  <div>
+    <%= f.label :work_id, style: "display: block" %>
+    <%= f.number_field :work_id %>
+  </div>
+
+  <div>
+    <%= f.label :yourself, style: "display: block" %>
+    <%= f.text_area :yourself %>
+  </div>
+
+  <div>
+    <%= f.label :latitude, style: "display: block" %>
+    <%= f.text_field :latitude %>
+  </div>
+
+  <div>
+    <%= f.label :longitude, style: "display: block" %>
+    <%= f.text_field :longitude %>
+  </div>
+
+  <div>
+    <%= f.label :foto, style: "display: block" %>
+    <%= f.file_field :foto, multiple: true %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

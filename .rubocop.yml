@@ -10,6 +10,14 @@ AllCops:
     - 'db/**/*'
     - 'app/helpers/application_helper.rb'
 
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/users/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/users/*'
+
 Style/FrozenStringLiteralComment:
   Enabled: false
   
