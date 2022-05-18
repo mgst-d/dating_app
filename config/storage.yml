@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: dating-app
-  credentials: <%= Rails.root.join(".config/secrets/dating-app-350512-aa8f8bff7764.json") %>
+  credentials: <%= Rails.root.join("./config/secrets/dating-app-350512-d74a663b7328.json") %>
   bucket: dating-app-bucket
 
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
