@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+.body-wrapper {
+  height: 100%;
+}
+
+.body-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+header,
+main,
+footer {
+  // width: 100%;
+}

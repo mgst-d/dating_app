@@ -1,0 +1,18 @@
+footer {
+  min-height: 70px;
+  border: solid 10px #7a0c26;
+  border-radius: 22px;
+  -webkit-box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  -moz-box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fca7bb;
+
+  h3 {
+    font-size: 24px;
+    color: white;
+  }
+}

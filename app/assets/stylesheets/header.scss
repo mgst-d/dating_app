@@ -1,0 +1,85 @@
+header {
+  -webkit-box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  -moz-box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
+  min-height: 100px;
+  // background: #e8a735;
+  background-color: #fff;
+  border: solid 10px #ee2a7b;
+  border-radius: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@keyframes fly {
+  /* 0% {transform: scale(1)} */
+  50% {
+    transform: scale(1.7);
+  }
+  /* 0% {transform: scale(1)} */
+}
+@keyframes slide {
+  /* 0% {transform: rotate(0deg);} */
+  33% {
+    transform: rotate(-5deg);
+  }
+  66% {
+    transform: rotate(7deg);
+  }
+  /* 100% {transform: rotate(0deg);} */
+}
+
+.header-logo img {
+  width: 50px;
+  height: 50px;
+  margin: 0 40px;
+  transform-origin: 50% 100%;
+  animation-name: fly, slide;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+header nav {
+  flex: 1 1 auto;
+  margin: 0 40px;
+}
+
+header {
+  ul {
+    display: flex;
+    justify-content: end;
+    column-gap: 10px;
+    margin: 0;
+  }
+
+  li {
+    list-style-type: none;
+    flex: 0 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .favicon-button {
+      font-size: 48px;
+      color: #da2965;
+      text-shadow: 0px -2px #a80e41;
+
+      .fa-gear *:hover {
+        animation-name: setting-rotate;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform-origin: 50% 50%;
+      }
+    }
+  }
+}
+
+@keyframes setting-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
