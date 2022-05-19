@@ -2,13 +2,13 @@ main {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: row;
 
   .main-background {
     position: absolute;
-    border-radius:  50px 50px 330px 50px;
-    background: bottom rgb(247,60,102) url("kiss-main.png");
+    border-radius: 50px 50px 330px 50px;
+    background: bottom rgb(247, 60, 102) url("kiss-main.png");
     background-size: auto 90%;
     background-repeat: no-repeat;
     background-position: left 5% top 50%;
@@ -26,17 +26,23 @@ main {
     z-index: 1;
 
     & div {
-      background: -webkit-linear-gradient(45deg, rgb(247, 60, 102) 1%, rgb(157, 0, 97));
-      background: -moz-linear-gradient(45deg, rgb(247, 60, 102) 1%, rgb(157, 0, 97));
+      background: -webkit-linear-gradient(
+        45deg,
+        rgb(247, 60, 102) 1%,
+        rgb(157, 0, 97)
+      );
+      background: -moz-linear-gradient(
+        45deg,
+        rgb(247, 60, 102) 1%,
+        rgb(157, 0, 97)
+      );
       background: linear-gradient(45deg, rgb(247, 60, 102) 1%, rgb(157, 0, 97));
       width: 100%;
       height: 100%;
       opacity: 0.6;
     }
-
-
   }
-   
+
   .main-info {
     z-index: 2;
     display: flex;
@@ -57,7 +63,29 @@ main {
     bottom: 26%;
     padding: 20px;
   }
- 
+
+ .main-content-index {
+  width: 40%;
+  top: auto;
+  right: auto;
+  left: auto;
+  bottom: auto;
+  margin-right: auto;
+ }
+
+ .foto-preview {
+  transition: 0.5s;
+  width: 80px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(4.0);
+  }
+
+ }
 }
 
 #map {

@@ -20,7 +20,7 @@
   <body>
   <div class="body-wrapper">
     <header>
-     <a href=# class="header-logo">
+     <a href="<%=users_path%>" class="header-logo">
       <%= image_tag("two-hearts.png", :alt => "hearts logo")%>
      </a>
      <nav>
@@ -42,30 +42,7 @@
     <div class="main-background">
       <div></div>
     </div>
-
-
     <div class="main-info">
-    <% if !user_signed_in? && request.fullpath == '/'%>
-    <div class="main-content">
-      <h1> Find your love</h1> 
-      <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
-      </div>
-    <% end %>
-
-    
-
-
-    <% if !user_signed_in? && request.fullpath == '/'%>
-    <div class="container_big-button" align="center">
-      <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
-    </div>
-    <% end %>
-
-    
-    <!--<div class="shadow"></div> -->
-    <!--<p class="notice"><%= notice %></p> -->
-    <!--<p class="alert"><%= alert %></p> -->
-    
     
     <%= yield %>
     </div>

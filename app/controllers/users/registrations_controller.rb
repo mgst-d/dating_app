@@ -18,8 +18,8 @@ module Users
         if @user.active_for_authentication?
           set_flash_message! :notice, :signed_up
           sign_up(resource_name, resource)
-          # redirect_to edit_user_path(@user)
           respond_with resource, location: after_sign_up_path_for(resource)
+
         else
           set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
           expire_data_after_sign_in!
@@ -65,6 +65,14 @@ module Users
     # end
 
     protected
+
+    def after_sign_up_path_for(_resource)
+      user_path(current_user)
+    end
+
+    def after_update_path_for(_resource)
+      user_path(current_user)
+    end
 
     def sign_up_params
       devise_parameter_sanitizer.sanitize(:sign_up)
