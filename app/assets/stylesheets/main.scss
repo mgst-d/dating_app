@@ -33,10 +33,24 @@ main {
       height: 100%;
       opacity: 0.6;
     }
+
+
   }
    
   .main-info {
     z-index: 2;
+  }
+
+  .main-content {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 10px;
+    border-radius: 10px;
+    top: 10%;
+    right: 34%;
+    left: 28%;
+    bottom: 26%;
+    padding: 20px;
   }
  
 }
