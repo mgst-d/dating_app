@@ -39,10 +39,15 @@ main {
    
   .main-info {
     z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 70%;
+    padding: 40px;
   }
 
   .main-content {
-    position: absolute;
+    margin: 0 20px;
     background-color: #fff;
     border-radius: 10px;
     border-radius: 10px;
@@ -56,9 +61,9 @@ main {
 }
 
 #map {
-  margin: 20px;
-  flex: 1 1 200px;
-  height: calc( 100% - 40px);
+  margin: 0 20px;
+  flex: 0 1 700px;
+  height: 50%;
   border-radius: 20px;
   shadow-box: 3px 3px 10px black;
 }

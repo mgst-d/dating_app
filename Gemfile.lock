@@ -352,9 +352,9 @@ DEPENDENCIES
   capybara
   debug
   devise
+  font-awesome-rails
   google-cloud-storage (~> 1.11)
   image_processing (~> 1.2)
-  font-awesome-rails
   importmap-rails
   jbuilder
   pg (~> 1.1)

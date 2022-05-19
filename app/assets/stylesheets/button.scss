@@ -45,3 +45,8 @@
   border-bottom: 1px solid;
 }
 
+.disabled {
+  pointer-events: none;
+  background-color: #b46680;
+}
+
