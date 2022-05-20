@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Sansita+One);
+
+.container_big-button {
+  position: absolute;
+  top: 10%;
+  right: 7%;
+
+  .big-button {
+    position: relative;
+    background-color: #d4c3ff;
+    color: #000000;
+    font-family: "Sansita One", cursive;
+    font-size: 26px;
+    font-weight: 500;
+    margin: 10px auto;
+    padding: 20px;
+    height: 270px;
+    width: 270px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+
+    -webkit-box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
+
+    margin: 50px auto;
+
+    border-color: #4c61e0;
+    border-width: 10px;
+    border-radius: 50%;
+    padding: 20px;
+
+    &:active {
+      box-shadow: 0px 3px 0px #3448bb, 0px 3px 6px rgba(0, 0, 0, 0.9);
+      position: relative;
+      top: 10px;
+    }
+
+    .shadow {
+      background: #000;
+      border-radius: 40px 100px 100px 100px;
+      box-shadow: 0 0 20px 10px #111;
+      height: 120px;
+      width: 270px;
+      opacity: 0.2;
+      margin: 30px auto;
+
+      &:active {
+        box-shadow: 0px 3px 0px #3448bb, 0px 3px 6px rgba(0, 0, 0, 0.9);
+        position: relative;
+        top: 50px;
+      }
+    }
+  }
+}

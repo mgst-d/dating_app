@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+     <%# <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> %>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
     <title>DatingApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,15 +18,47 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div class="body-wrapper">
+    <header>
+     <a href="<%=users_path%>" class="header-logo">
+      <%= image_tag("two-hearts.png", :alt => "hearts logo")%>
+     </a>
+     <nav>
+     <ul>
+        <% if user_signed_in? %>
+          <%= link_to 'Map', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red disabled' %>
+          <%= link_to 'Swipe', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red disabled' %>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red' %>
+          <%= link_to fa_icon('gear'), edit_user_registration_path(current_user), class: 'action-button shadow animate red' %>
+            <% else %>
+          <li> <%= link_to 'Sign in', new_user_session_path, class: 'action-button shadow animate red' %></li>
+          <li> <%= link_to 'Sign up', new_user_registration_path, class: 'action-button shadow animate red' %></li>
+        <% end %>
+
+      </ul>
+     </nav>
+    </header>
+    <main>
+    <div class="main-background">
+      <div></div>
+    </div>
+    <div class="main-info">
     
-    <% if user_signed_in? %>
-      <span>Hello, <%= current_user.first_name %></span>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Log in', new_user_session_path %> or <%= link_to 'Sign up', new_user_registration_path %>
-    <% end %>
     <%= yield %>
+    </div>
+    </main>
+    <footer>
+      <div>
+        <h3><a>About us</a></h3>
+      </div>
+      <div>
+        <h3><a>Contact</a></h3>
+      </div>
+    </footer>
+    </div>
+
+
+    <%# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> %>
+ 
   </body>
 </html>
