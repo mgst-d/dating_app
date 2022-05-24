@@ -7,4 +7,16 @@ class User < ApplicationRecord
   has_many :hobbies, through: :hobby_users
   has_many :hobby_users, dependent: :destroy
   belongs_to :work
+  has_many :liker_likes,
+           class_name: 'Like',
+           foreign_key: 'liker_id',
+           dependent: :destroy,
+           inverse_of: :user
+  has_many :likees, through: :liker_likes
+  has_many :likee_likes,
+           class_name: 'Like',
+           foreign_key: 'likee_id',
+           dependent: :destroy,
+           inverse_of: :user
+  has_many :likers, through: :likee_likes
 end
