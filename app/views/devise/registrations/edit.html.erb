@@ -49,6 +49,13 @@
     <%= f.file_field :foto, multiple: true %>
   </div>
 
+    <p>
+    <strong>Foto:</strong>
+    <% @user.foto.each do |foto| %>
+       <div><%= image_tag foto, class: "foto-preview" %></div>
+    <% end %>
+  </p>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
