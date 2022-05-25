@@ -40,10 +40,12 @@
   </p>
 
   <p>
-    <strong>Foto:</strong>
-    <% user.foto.each do |foto| %>
-       <div><%= image_tag foto, class: "foto-preview" %></div>
-    <% end %>
+    <strong>Foto:</strong>  
   </p>
+    <div class="foto-main-wrapper">
+    <% user.foto.each do |foto| %>
+       <div class="foto-preview-wrapper"><%= image_tag foto, class: "foto-preview" %></div>
+    <% end %>
+    </div>
 
 </div>

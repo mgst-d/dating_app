@@ -64,28 +64,72 @@ main {
     padding: 20px;
   }
 
- .main-content-index {
-  width: 40%;
-  top: auto;
-  right: auto;
-  left: auto;
-  bottom: auto;
-  margin-right: auto;
- }
-
- .foto-preview {
-  transition: 0.5s;
-  width: 80px;
-
-  &:hover {
-    cursor: pointer;
+  .main-content-index {
+    width: 40%;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    margin-right: auto;
   }
+  .foto-main-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    row-gap: 10px;
+    width: 250px;
+    height: 300px;
+    border: solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: overlay;
+    overflow-y: auto;
 
-  &:active {
-    transform: scale(4.0);
+
+    .foto-preview-wrapper {
+      position: relative;
+      flex: 0 0 100px;
+      height: 100px;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & a {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: solid black 3px;
+        background-color: white;
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 900;
+        color: black;
+        position: absolute;
+        transition: 1s;
+
+        &:hover {
+          background-color: black;
+          border: solid white 3px;
+        }
+      }
+
+      .foto-preview {
+        transition: 0.5s;
+        max-width: 100%;
+        max-height: 100%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
-
- }
 }
 
 #map {
