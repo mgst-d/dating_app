@@ -1,3 +1,4 @@
+# Allow remove imagi in user profile
 class AttachmentsController < ApplicationController
   def purge
     attachment = ActiveStorage::Attachment.find(params[:id])
