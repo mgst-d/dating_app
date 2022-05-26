@@ -1,13 +1,10 @@
     <div class="main-content main-content-index">
       <h1>Tau-app <br>Find your love</h1> 
       <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
-      </div>
-  
-
-    
-
-
-
-    <div class="container_big-button" align="center">
-      <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
     </div>
+
+    <% if !user_signed_in? %>
+      <div class="container_big-button" align="center">
+        <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
+      </div>
+    <% end %>
