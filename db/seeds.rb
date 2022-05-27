@@ -9,6 +9,9 @@ hobby_list = ['Cooking','Reading', 'Traveling', 'Video gaming', 'Photography', '
 work_list = ['Healthcare', 'Education', 'Sales', 'Sports', 'Marketing', 'IT', 'Driver', 'Insurance', 'Bank', 'Business', 'Art', 
              'Construction', 'Rescuer', 'Police', 'Army', 'Beauty', 'TV and radio', 'Industry', 'Fermer', 'Other']
 
+Hobby.delete_all
+Work.delete_all
+
 def essence_create(model, title_list_array)
   title_list_array.each do |title|
     model.create(title: title)
