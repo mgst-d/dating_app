@@ -5,33 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Hobby.create(title: 'Cooking')
-Hobby.create(title: 'Reading')
-Hobby.create(title: 'Traveling')
-Hobby.create(title: 'Video gaming')
-Hobby.create(title: 'Photography')
-Hobby.create(title: 'Music')
-Hobby.create(title: 'Sport')
-Hobby.create(title: 'Board games')
-Hobby.create(title: 'Gardening')
-Hobby.create(title: 'Fishing')
-Work.create(title: 'Healthcare')
-Work.create(title: 'Education')
-Work.create(title: 'Sales')
-Work.create(title: 'Sports')
-Work.create(title: 'Marketing')
-Work.create(title: 'IT')
-Work.create(title: 'Driver')
-Work.create(title: 'Insurance')
-Work.create(title: 'Bank')
-Work.create(title: 'Business')
-Work.create(title: 'Art')
-Work.create(title: 'Construction')
-Work.create(title: 'Rescuer')
-Work.create(title: 'Police')
-Work.create(title: 'Army')
-Work.create(title: 'Beauty')
-Work.create(title: 'TV and radio')
-Work.create(title: 'Industry')
-Work.create(title: 'Fermer')
-Work.create(title: 'Other')
+hobby_list = ['Cooking','Reading', 'Traveling', 'Video gaming', 'Photography', 'Music', 'Sport', 'Board games', 'Gardening', 'Fishing']
+work_list = ['Healthcare', 'Education', 'Sales', 'Sports', 'Marketing', 'IT', 'Driver', 'Insurance', 'Bank', 'Business', 'Art', 
+             'Construction', 'Rescuer', 'Police', 'Army', 'Beauty', 'TV and radio', 'Industry', 'Fermer', 'Other']
+
+def essence_create(model, title_list_array)
+  title_list_array.each do |title|
+    model.create(title: title)
+  end
+end
+
+essence_create(Hobby, hobby_list)
+essence_create(Work, work_list)
