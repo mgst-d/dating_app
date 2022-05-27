@@ -50,11 +50,16 @@
   </div>
 
     <p>
-    <strong>Foto:</strong>
+    <strong>Foto:</strong> 
+    </p>
+    <div class="foto-main-wrapper">
     <% @user.foto.each do |foto| %>
-       <div><%= image_tag foto, class: "foto-preview" %></div>
+      <div class="foto-preview-wrapper">
+      <%= image_tag foto, class: "foto-preview" %>
+      <%= link_to "", purge_attachments_path(foto), data: { turbo_method: :delete }%>
+      </div>
     <% end %>
-  </p>
+    </div>
 
   <div class="field">
     <%= f.label :email %><br />
