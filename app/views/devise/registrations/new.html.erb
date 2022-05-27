@@ -47,7 +47,7 @@
 
   <div>
     <%= f.label :work_id, style: "display: block" %>
-    <%= f.select :work_id, options_for_select(Work.all.collect { |work| [work.title, work.id] }), {include_blank: '-select work-'} %>
+    <%= f.select :work_id, options_for_select(Work.all.collect { |work| [work.title, work.id] }), {include_blank: '-Select work-'} %>
   </div>
 
   <div>
