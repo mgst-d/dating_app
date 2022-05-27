@@ -1,13 +1,33 @@
     <div class="main-content main-content-index">
-      <h1>Tau-app <br>Find your love</h1> 
-      <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
+      <h1>Tau-app <br>Find your love</h1>
+      <% if !user_signed_in? %>
+        <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
+      <% end %>
+      <% if user_signed_in? %>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+            <% @users.each_with_index do |user, i| %>
+              <% if i == 0 %>
+                <div class="carousel-item active">
+              <% else %>
+                <div class="carousel-item">
+              <% end %>
+              <%= image_tag(user.foto[0], class: "d-block w-100") %>
+              </div>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      <% end %>
+    <% if !user_signed_in? %>
+      <div class="container_big-button" align="center">
+        <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
       </div>
-  
-
-    
-
-
-
-    <div class="container_big-button" align="center">
-      <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
-    </div>
+    <% end %>
