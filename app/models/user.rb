@@ -13,12 +13,22 @@ class User < ApplicationRecord
            class_name: 'Like',
            foreign_key: 'liker_id',
            dependent: :destroy,
-           inverse_of: :user
+           inverse_of: :likee
   has_many :likees, through: :liker_likes
   has_many :likee_likes,
            class_name: 'Like',
            foreign_key: 'likee_id',
            dependent: :destroy,
-           inverse_of: :user
-  has_many :likers, through: :likee_likes
+           inverse_of: :liker
+  has_many :likers, through: :like
+
+  validates :first_name, presence: true
+  validates :sex, presence: true
+  validates :foto, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+  validates :birth, presence: true, comparison: { greater_than: Time.gm(1900), less_than: Time.zone.now }
+  validates :yourself, length: { maximum: 200 },
+                       exclusion: { in: %w[fuck Fuck fucked Fucked fucking Fucking motherfucker Motherfucker],
+                                    message: 'forbidden words' }
 end

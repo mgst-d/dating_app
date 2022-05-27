@@ -39,17 +39,25 @@
 
   <div>
     <%= f.label :sex, style: "display: block" %>
-    <%= f.check_box :sex %>
+    <%= f.radio_button :sex, true %>
+    <%= f.label :sex, "man" %>
+    <%= f.radio_button :sex, false %>
+    <%= f.label :sex, "woman" %>
   </div>
 
   <div>
     <%= f.label :work_id, style: "display: block" %>
-    <%= f.number_field :work_id %>
+    <%= f.select :work_id, options_for_select(Work.all.collect { |work| [work.title, work.id] }), {include_blank: '-Select work-'} %>
   </div>
 
   <div>
     <%= f.label :yourself, style: "display: block" %>
     <%= f.text_area :yourself %>
+  </div>
+
+  <div>
+    <%= f.label :hobbies, style: "display: block" %> 
+    <%= f.collection_check_boxes(:hobby_ids, Hobby.all, :id, :title, {}, multiple: true) %> 
   </div>
 
   <div>

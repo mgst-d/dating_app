@@ -82,7 +82,7 @@ module Users
     def configure_sign_up_params
       devise_parameter_sanitizer.permit(:sign_up,
                                         keys: [:first_name, :last_name, :birth, :sex, :work_id, :yourself, :latitude,
-                                               :longitude, { foto: [] }])
+                                               :longitude, { hobby_ids: [] }, { foto: [] }])
     end
 
     def account_update_params
@@ -92,7 +92,7 @@ module Users
     def configure_account_update_params
       devise_parameter_sanitizer.permit(:account_update,
                                         keys: [:first_name, :last_name, :birth, :sex, :work_id, :yourself, :latitude,
-                                               :longitude, { foto: [] }])
+                                               :longitude, { hobby_ids: [] }, { foto: [] }])
     end
 
     # The path used after sign up.

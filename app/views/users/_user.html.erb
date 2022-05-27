@@ -10,24 +10,44 @@
   </p>
 
   <p>
-    <strong>Birth:</strong>
-    <%= user.birth %>
+    <strong>Age:</strong>
+    <%= (Date.today.strftime('%Y%m%d').to_i - user.birth.strftime('%Y%m%d').to_i) / 10000 %>
   </p>
 
   <p>
     <strong>Sex:</strong>
-    <%= user.sex %>
+    <% if user.sex %>
+      man
+    <% else %>
+      woman
+    <% end %>
   </p>
 
   <p>
     <strong>Work:</strong>
-    <%= user.work_id %>
+    <% unless user.work.nil? %>
+      <%= user.work.title %>
+    <% end %>
   </p>
 
   <p>
     <strong>Yourself:</strong>
     <%= user.yourself %>
   </p>
+
+  <p>
+    <strong>Hobbies:</strong>
+    
+    <% if user.hobbies != [] %>
+      <% user.hobbies.each do |hobby| %>
+        <% if user.hobbies.last == hobby %>
+          <%= "#{hobby.title}" %>
+        <% else %>
+          <%= "#{hobby.title}, " %>
+        <% end %>
+      <% end %> 
+    <% end %>
+  </p>  
 
   <p>
     <strong>Latitude:</strong>

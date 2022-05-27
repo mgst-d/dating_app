@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_24_161729) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_011054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_161729) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_hobbies_on_title", unique: true
   end
 
   create_table "hobby_users", force: :cascade do |t|
@@ -53,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_161729) do
     t.datetime "updated_at", null: false
     t.bigint "hobby_id"
     t.bigint "user_id"
+    t.index ["hobby_id", "user_id"], name: "index_hobby_users_on_hobby_id_and_user_id", unique: true
     t.index ["hobby_id"], name: "index_hobby_users_on_hobby_id"
     t.index ["user_id"], name: "index_hobby_users_on_user_id"
   end
@@ -92,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_161729) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_works_on_title", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
