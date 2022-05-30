@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  get "map", to: "users#map"
   delete "attachments/:id/purge", to: "attachments#purge" , as: "purge_attachments"
 
   post 'likes/index', to: 'likes#create', as: 'create_like'
