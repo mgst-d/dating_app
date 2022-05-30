@@ -31,5 +31,5 @@ class User < ApplicationRecord
   validates :yourself, length: { maximum: 200 },
                        exclusion: { in: %w[fuck Fuck fucked Fucked fucking Fucking motherfucker Motherfucker],
                                     message: 'forbidden words' }
-  validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: [:png, :jpg, :jpeg, :bmp]
+  validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp]
 end
