@@ -33,6 +33,9 @@ gem 'jbuilder'
 # Authentication
 gem 'devise'
 
+# Foto validations
+gem 'active_storage_validations'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

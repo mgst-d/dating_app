@@ -62,10 +62,12 @@
     </p>
     <div class="foto-main-wrapper">
     <% @user.foto.each do |foto| %>
-      <div class="foto-preview-wrapper">
-      <%= image_tag foto, class: "foto-preview" %>
-      <%= link_to "", purge_attachments_path(foto), data: { turbo_method: :delete }%>
-      </div>
+      <% unless foto.id.nil? %>
+        <div class="foto-preview-wrapper">
+        <%= image_tag foto, class: "foto-preview" %>
+        <%= link_to "", purge_attachments_path(foto), data: { turbo_method: :delete }%>
+        </div>
+      <% end %>
     <% end %>
     </div>
 
