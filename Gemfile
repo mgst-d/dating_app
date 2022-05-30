@@ -33,6 +33,12 @@ gem 'jbuilder'
 # Authentication
 gem 'devise'
 
+# Photo validations
+gem 'active_storage_validations'
+
+# Filter forbidden words for 'yourself'
+gem 'profanity-filter', '~> 1.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
