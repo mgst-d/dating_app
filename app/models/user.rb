@@ -1,5 +1,6 @@
 Rails.application.config.active_record.belongs_to_required_by_default = false
 
+# this is User model
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -28,8 +29,11 @@ class User < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :birth, presence: true, comparison: { greater_than: Time.gm(1900), less_than: Time.zone.now }
-  validates :yourself, length: { maximum: 200 },
-                       exclusion: { in: %w[fuck Fuck fucked Fucked fucking Fucking motherfucker Motherfucker],
-                                    message: 'forbidden words' }
+  validates :yourself, length: { maximum: 200 }
   validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp]
+  validate :yourself_forbidden_words
+
+  def yourself_forbidden_words(filter_text = ProfanityFilter.new)
+    errors.add(:yourself, 'includes forbidden words') if filter_text.profane?(yourself)
+  end
 end
