@@ -6,22 +6,19 @@
   flex-direction: column;
 
   .user-name-popup {
-    text-align: center;
-    font-size: 24px;
-    flex: 1 1 30px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    // flex: 1 1 30px;
+    // display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     border: solid;
     border-radius: 23px;
     outline: none;
-    margin-bottom: 5px;
-
-    h3 {
-      margin: 0 !important;
-    }
-    
+    margin-bottom: 5px;  
   }
 }
 
@@ -31,7 +28,8 @@
   justify-content: center;
   flex-direction: column;
   background-color: #b9b9b9;
-  flex: 1 1 155px;
+  flex: 1 1 140px;
+  max-height: 140px;
 
   .carousel-inner {
     .active {

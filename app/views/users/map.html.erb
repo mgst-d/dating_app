@@ -43,18 +43,15 @@ var marker_test = new mapboxgl.Marker()
 .setLngLat([latitude,longitude])
 .setPopup(new mapboxgl.Popup().setHTML(`
 <div class="fotoUser">
-<a href="#" class="user-name-popup">
-  <h3>${nameUser}</h3>
-</a>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+<button type="button" class="user-name-popup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<%=ind%>" onclick="createModal(<%=ind%>)">
+  ${nameUser}
 </button>
 
-<div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal<%=ind%>" aria-labelledby="exampleModalLabel<%=ind%>" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel<%=ind%>">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -92,8 +89,15 @@ var marker_test = new mapboxgl.Marker()
 `))
 .addTo(map);
 marker_test.togglePopup(); 
-marker_test.togglePopup(); 
+// marker_test.togglePopup(); 
 <% end %>
+
+function createModal(num){
+  console.log(num)
+  const modal = document.querySelector(`#exampleModal${num}`)
+  document.body.prepend(modal)
+  console.log(modal)
+}
 </script>
 
 <!--<h1>Users</h1>
