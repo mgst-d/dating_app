@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def edit; end
 
   def map
-    @user = User.all
+    @users = User.all
   end
 
   # POST /users or /users.json
