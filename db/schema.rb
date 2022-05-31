@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_30_215007) do
     t.string "first_name"
     t.string "last_name"
     t.date "birth"
-    t.integer "sex", default: 0
+    t.string "sex"
     t.text "yourself"
     t.float "latitude"
     t.float "longitude"
