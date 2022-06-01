@@ -21,7 +21,7 @@ class User < ApplicationRecord
            foreign_key: 'likee_id',
            dependent: :destroy,
            inverse_of: :liker
-  has_many :likers, through: :like
+  has_many :likers, through: :likee_likes
 
   validates :first_name, presence: true
   validates :sex, presence: true

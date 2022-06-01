@@ -46,6 +46,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def matches
+    @current_user_matches = User.find(current_user.liker_ids & current_user.likee_ids)
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy

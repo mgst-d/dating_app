@@ -13,6 +13,8 @@
                 <div class="carousel-item">
               <% end %>
               <%= image_tag(user.foto[0], class: "d-block w-100") %>
+               <%= button_to 'like', 'likes/index', method: :post, params: {likes: {liker_id: current_user.id, likee_id: user.id}} %>
+               <%= link_to 'like', create_like_path, method: :post, params: {likes: {liker_id: current_user.id, likee_id: user.id}} %>
               </div>
             <% end %>
           </div>
