@@ -3,6 +3,8 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
 
+    redirect_to root_path
+
     respond_to do |format|
       if @like.save
         format.html { redirect_to root_path, notice: 'like was successfully created.' }
