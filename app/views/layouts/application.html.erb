@@ -27,8 +27,8 @@
      <nav>
      <ul>
         <% if user_signed_in? %>
-          <%= link_to 'Map', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red disabled' %>
-          <%= link_to 'Swipe', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red disabled' %>
+          <%= link_to 'Map', index_likes_path, class: 'action-button shadow animate red' %>
+          <%= link_to 'Swipe', root_path, class: 'action-button shadow animate red' %>
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red' %>
           <%= link_to fa_icon('gear'), edit_user_registration_path(current_user), class: 'action-button shadow animate red' %>
             <% else %>
