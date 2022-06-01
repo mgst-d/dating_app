@@ -28,8 +28,7 @@
         </div>
         <div class="swipe-button">
       <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate red'%>    
-      <%= link_to 'Dislike', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate yellow'%>    
-      <%= link_to 'Next', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate blue'%>   
+      <%= link_to 'Dislike', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate yellow disabled'%>     
         </div> 
       <% end %>
     <% if !user_signed_in? %>
