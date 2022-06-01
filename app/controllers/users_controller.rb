@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.all.reject { |user| user.sex == current_user.sex }.shuffle unless current_user.nil?
   end
 
   # GET /users/1 or /users/1.json
@@ -17,10 +17,6 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit; end
-
-  def map
-    @users = User.all
-  end
 
   # POST /users or /users.json
   def create

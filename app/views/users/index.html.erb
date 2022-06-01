@@ -1,22 +1,21 @@
     <div class="main-content main-content-index">
-      <h1>Tau-app <br>Find your love</h1>
+      
       <% if !user_signed_in? %>
+        <h1>Tau-app <br>Find your love</h1>
         <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
       <% end %>
       <% if user_signed_in? %>
         <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
           <div class="carousel-inner">
-            <% @users.each_with_index do |user, i| %>
-              <% if i == 0 %>
+                <%@users[0].foto.each_with_index do |foto, index|%>
+                <% if index == 0 %>
                 <div class="carousel-item active">
-              <% else %>
+                <% else %>
                 <div class="carousel-item">
-              <% end %>
-              <%= image_tag(user.foto[0], class: "d-block w-100") %>
-               <%= button_to 'like', 'likes/index', method: :post, params: {likes: {liker_id: current_user.id, likee_id: user.id}} %>
-               <%= link_to 'like', create_like_path, method: :post, params: {likes: {liker_id: current_user.id, likee_id: user.id}} %>
-              </div>
-            <% end %>
+                <% end %>
+                  <%= image_tag(foto, class: "d-block") %>
+                </div>
+                <%end%>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,6 +26,11 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+        <div class="swipe-button">
+      <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate red'%>    
+      <%= link_to 'Dislike', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate yellow'%>    
+      <%= link_to 'Next', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate blue'%>   
+        </div> 
       <% end %>
     <% if !user_signed_in? %>
       <div class="container_big-button" align="center">

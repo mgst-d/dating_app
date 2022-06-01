@@ -65,12 +65,44 @@ main {
   }
 
   .main-content-index {
-    width: 40%;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    margin-right: auto;
+    width: 90%;
+    height: 100%;
+    box-shadow: 3px 3px 10px black;
+    // top: auto;
+    // right: auto;
+    // left: auto;
+    // bottom: auto;
+    // margin-right: auto;
+
+    #carouselExampleControls {
+      max-height: none;
+      height: 550px;
+
+      .carousel-inner {
+
+        & * {
+          max-width: none;
+          width: auto !important;
+          height: auto;
+          max-height: none;
+        }
+
+        .carousel-item {
+          max-width: 100%;
+          width: auto;
+          flex-direction: column;
+        }
+        .active {
+          float: none;
+          align-items: center;
+          
+          img {
+            max-height: 550px;
+            max-width: none;
+          }
+        }
+      }
+    }
   }
   .foto-main-wrapper {
     display: flex;
@@ -138,4 +170,19 @@ main {
   height: 50%;
   border-radius: 20px;
   shadow-box: 3px 3px 10px black;
+}
+
+.swipe-button {
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
+
+  .action-button {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
