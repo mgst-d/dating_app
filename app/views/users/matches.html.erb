@@ -1,0 +1,6 @@
+<% if @current_user_matches.size.zero? %>
+  <h1>No matches</h1>
+<% end %>
+<% @current_user_matches.each do |user_match| %>
+  <h1><%= user_match.first_name %></h1>
+<% end %>

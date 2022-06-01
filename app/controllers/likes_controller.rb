@@ -3,8 +3,6 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
 
-    redirect_back fallback_location: root_path
-
     respond_to do |format|
       if @like.save
         format.html { redirect_to root_path, notice: 'like was successfully created.' }
@@ -12,10 +10,6 @@ class LikesController < ApplicationController
         format.html { redirect_to root_path, notice: 'unprocessable_entity' }
       end
     end
-  end
-
-  def index
-    @likes = Like.all
   end
 
   private

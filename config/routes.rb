@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   delete "attachments/:id/purge", to: "attachments#purge" , as: "purge_attachments"
 
   post 'likes/index', to: 'likes#create', as: 'create_like'
-  get 'likes/index', to: 'likes#index', as: 'index_likes'
+  get 'users/:id/matches', to: 'users#matches', as: 'users_matches'
 end
