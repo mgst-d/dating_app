@@ -28,7 +28,7 @@
         </div>
         <div class="swipe-button">
       <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate red'%>    
-      <%= link_to 'Dislike', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), class: 'action-button shadow animate yellow disabled'%>     
+      <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[user]), params: {:action=>"destroy", :controller=>"likes"}, data: { turbo_method: :delete }, class: 'action-button shadow animate yellow'%>     
         </div> 
       <% end %>
     <% if !user_signed_in? %>
