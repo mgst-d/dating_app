@@ -6,6 +6,12 @@ class LikesController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    Like.find_by(like_params).destroy if Like.where(like_params) != []
+
+    redirect_to root_path
+  end
+
   private
 
   def like_params

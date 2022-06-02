@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
 
   delete "attachments/:id/purge", to: "attachments#purge" , as: "purge_attachments"
+  delete 'dislike/:liker_id/:likee_id', to: 'likes#destroy', as: 'destroy_like'
   get 'users/:id/matches', to: 'users#matches', as: 'users_matches'
   get 'like/:liker_id/:likee_id', to: 'likes#create', as: 'create_like'
 end
