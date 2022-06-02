@@ -4,6 +4,8 @@ main {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
+  background: #fff;
+  border-radius: 10px;
 
   .main-background {
     position: absolute;
@@ -80,13 +82,10 @@ main {
       text-align: justify;
     }
 
-    #carouselExampleInterval-main {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      background-color: #b9b9b9;
-      height: 400px;
-      width: 300px;
+    .edit-btn {
+      display: grid;
+      grid-template-columns: 120px 216px;
+      grid-auto-rows: 80px;
     }
   }
 
@@ -211,4 +210,23 @@ main {
     justify-content: center;
     align-items: center;
   }
+}
+
+#carouselExampleInterval-main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #b9b9b9;
+  height: 400px;
+  width: 300px;
+  max-width: none;
+  max-height: none;
+}
+.modal-body {
+  overflow: hidden;
+  max-height: 550px;
+  overflow-y: scroll;
+}
+.modal-footer {
+  height: 105px;
 }

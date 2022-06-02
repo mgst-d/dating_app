@@ -54,7 +54,7 @@ var marker_test = new mapboxgl.Marker()
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel<%=ind%>">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel<%=ind%>"><%=link_to image_tag("logo.png", class: "logo"), root_path, class: "header-logo"%></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -62,7 +62,7 @@ var marker_test = new mapboxgl.Marker()
       </div>
       <div class="modal-footer">
         <button type="button" class="action-button shadow animate red" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="action-button shadow animate green">Run chat</button>
+        <button type="button" class="action-button shadow animate green disabled">Run chat</button>
         <button type="button" class="action-button shadow animate yellow">Dislike</button>
       </div>
     </div>
