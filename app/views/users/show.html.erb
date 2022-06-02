@@ -4,9 +4,8 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit my profile", edit_user_registration_path(current_user) %>
-  <% link_to "Back to users", users_path %>
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: 'action-button shadow animate red'%>
+  <% link_to "Back to users", users_path%>
 </div>
 </div>
 <div id='map'></div>

@@ -9,6 +9,18 @@ body,
   height: 100%;
 }
 
+body {
+  background-image: url(bg.png);
+  background-size: auto auto;
+  background-position: 0 0;
+  // animation: body_bg 400s infinite linear;
+}
+
+@keyframes body_bg {
+  to {
+    background-position: 100vw 50vh;
+  }
+}
 .body-wrapper {
   margin: 0 auto;
   display: flex;
@@ -21,4 +33,8 @@ header,
 main,
 footer {
   // width: 100%;
+}
+
+.hidden-item {
+  display: none;
 }

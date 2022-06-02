@@ -57,26 +57,28 @@
 
   <div>
     <%= f.label :hobbies, style: "display: block" %> 
+    <div class="hobbies">
     <%= f.collection_check_boxes(:hobby_ids, Hobby.all, :id, :title, {}, multiple: true) %> 
+    </div>
   </div>
 
-  <div>
+  <div class="hidden-item">
     <%= f.label :latitude, style: "display: block" %>
     <%= f.text_field :latitude %>
   </div>
 
-  <div>
+  <div class="hidden-item">
     <%= f.label :longitude, style: "display: block" %>
     <%= f.text_field :longitude %>
   </div>
 
   <div>
     <%= f.label :foto, style: "display: block" %>
-    <%= f.file_field :foto, multiple: true %>
+    <%= f.file_field :foto, multiple: true, class: 'action-button shadow animate red' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: 'action-button shadow animate red'%>
   </div>
 <% end %>
 
