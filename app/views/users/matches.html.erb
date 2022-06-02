@@ -58,11 +58,12 @@ var marker_test = new mapboxgl.Marker()
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <%= render user%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="action-button shadow animate red" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="action-button shadow animate green">Run chat</button>
+        <button type="button" class="action-button shadow animate yellow">Dislike</button>
       </div>
     </div>
   </div>
@@ -91,7 +92,7 @@ var marker_test = new mapboxgl.Marker()
 
 `))
 .addTo(map);
-marker_test.togglePopup(); 
+// marker_test.togglePopup(); 
 // marker_test.togglePopup(); 
 <% end %>
 
