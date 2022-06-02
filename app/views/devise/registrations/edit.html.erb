@@ -39,7 +39,9 @@
 
   <div>
     <%= f.label :hobbies, style: "display: block" %> 
-    <%= f.collection_check_boxes(:hobby_ids, Hobby.all, :id, :title, {}, multiple: true) %> 
+    <div class="hobbies">
+    <%= f.collection_check_boxes(:hobby_ids, Hobby.all, :id, :title, {}, multiple: true) %>
+    </div> 
   </div>
 
   <div class="hidden-item">
