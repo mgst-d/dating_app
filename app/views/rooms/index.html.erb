@@ -5,7 +5,7 @@
     <%= turbo_stream_from 'users' %>
     <div id="users">
       <% @users.each do |user| %>
-        <%= link_to user.email %>
+        <%= link_to user.email, user %>
       <% end %>
     </div>
     <h4> Rooms </h4>
