@@ -21,7 +21,7 @@
   <body>
   <div class="body-wrapper">
     <header>
-     <%=link_to image_tag("logo.png", class: "logo"), root_path, class: "header-logo"%>
+     <%=link_to image_tag("logo.png", class: "logo"), root_path, data: { turbo_method: :get }, class: "header-logo"%>
      <nav>
      <ul>
         <% if user_signed_in? %>

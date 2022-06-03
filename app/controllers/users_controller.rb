@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all.reject { |user| user.sex == current_user.sex }.shuffle unless current_user.nil?
+    @user = User.all.reject { |user| user.sex == current_user.sex }.shuffle[0] unless current_user.nil?
   end
 
   # GET /users/1 or /users/1.json
