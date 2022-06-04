@@ -31,7 +31,7 @@
           <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@user], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>    
         </div>
       <% elsif user_signed_in? && @user.nil? %>
-        <h1>Sorry :( <br>There are no people that match your criteria</h1> 
+        <h1>Sorry :( <br>No People Found</h1> 
       <% end %>
     <% if !user_signed_in? %>
       <div class="container_big-button" align="center">

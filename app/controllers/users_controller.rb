@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def index
     reset_session_users_id_list_after_a_period_of_time(3600)
-    generate_new_users_id_list_size_in_argument(100) if users_id_list_is_nil?
-    @user = User.find(session[:users].sample) if are_there_suitable_users?
+    generate_new_session_users_id_list_size_in_argument(100) if users_id_list_is_nil?
+    @user = User.find(session[:users_id].sample) if are_there_suitable_users?
   end
 
   # GET /users/1 or /users/1.json
@@ -75,19 +75,19 @@ class UsersController < ApplicationController
   end
 
   def users_id_list_is_nil?
-    !current_user.nil? && session[:users].nil?
+    !current_user.nil? && session[:users_id].nil?
   end
 
   def are_there_suitable_users?
-    !current_user.nil? && !session[:users].empty?
+    !current_user.nil? && !session[:users_id].empty?
   end
 
-  def generate_new_users_id_list_size_in_argument(list_size)
+  def generate_new_session_users_id_list_size_in_argument(list_size)
     session[:date] = Time.now.to_i
-    session[:users] = User.all.reject { |user| user.sex == @current_user.sex }.shuffle.pluck(:id)[0..list_size - 1]
+    session[:users_id] = User.all.reject { |user| user.sex == @current_user.sex }.shuffle.pluck(:id)[0..list_size - 1]
   end
 
   def reset_session_users_id_list_after_a_period_of_time(time)
-    session[:users] = nil if current_user.nil? || (Time.now.to_i - session[:date].to_i) > time
+    session[:users_id] = nil if current_user.nil? || (Time.now.to_i - session[:date].to_i) > time
   end
 end
