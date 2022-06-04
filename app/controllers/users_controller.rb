@@ -2,9 +2,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
-  # GET /users or /users.json
   def index
-    @users = User.all.reject { |user| user.sex == current_user.sex }.shuffle unless current_user.nil?
+    reset_session_users_id_list_after_a_period_of_time(3600)
+    generate_new_users_id_list_size_in_argument(100) if users_id_list_is_nil?
+    @user = User.find(session[:users].sample) if are_there_suitable_users?
   end
 
   # GET /users/1 or /users/1.json
@@ -71,5 +72,22 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :birth, :sex, :work_id, :yourself, :latitude, :longitude,
                                  foto: [])
+  end
+
+  def users_id_list_is_nil?
+    !current_user.nil? && session[:users].nil?
+  end
+
+  def are_there_suitable_users?
+    !current_user.nil? && !session[:users].empty?
+  end
+
+  def generate_new_users_id_list_size_in_argument(list_size)
+    session[:date] = Time.now.to_i
+    session[:users] = User.all.reject { |user| user.sex == @current_user.sex }.shuffle.pluck(:id)[0..list_size - 1]
+  end
+
+  def reset_session_users_id_list_after_a_period_of_time(time)
+    session[:users] = nil if current_user.nil? || (Time.now.to_i - session[:date].to_i) > time
   end
 end

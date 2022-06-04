@@ -4,10 +4,10 @@
         <h1>Tau-app <br>Find your love</h1>
         <p class="description-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
       <% end %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !@user.nil? %>
         <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
           <div class="carousel-inner">
-                <%@users[0].foto.each_with_index do |foto, index|%>
+                <%@user.foto.each_with_index do |foto, index|%>
                 <% if index == 0 %>
                 <div class="carousel-item active">
                 <% else %>
@@ -27,9 +27,11 @@
           </button>
         </div>
         <div class="swipe-button">
-          <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]]), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
-          <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>    
-        </div> 
+          <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[@user]), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
+          <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@user], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>    
+        </div>
+      <% elsif user_signed_in? && @user.nil? %>
+        <h1>Sorry :( <br>There are no people that match your criteria</h1> 
       <% end %>
     <% if !user_signed_in? %>
       <div class="container_big-button" align="center">
