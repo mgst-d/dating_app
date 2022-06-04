@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 
   def generate_new_users_id_list_size_in_argument(list_size)
     session[:date] = Time.now.to_i
-    session[:users] = User.all.reject { |user| user.sex == @current_user.sex }.pluck(:id)[0..list_size - 1]
+    session[:users] = User.all.reject { |user| user.sex == @current_user.sex }.shuffle.pluck(:id)[0..list_size - 1]
   end
 
   def reset_session_users_id_list_after_a_period_of_time(time)
