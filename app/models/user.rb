@@ -29,7 +29,8 @@ class User < ApplicationRecord
   validates :latitude, presence: true
   validates :birth, presence: true, comparison: { greater_than: Time.gm(1900), less_than: Time.zone.now }
   validates :yourself, length: { maximum: 255 }
-  validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp], limit: { min: 1, max: 5 }
+  validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp],
+                   limit: { min: 1, max: 5 }
   validate :yourself_forbidden_words
 
   def yourself_forbidden_words(filter_text = ProfanityFilter.new)
