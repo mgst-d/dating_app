@@ -36,4 +36,9 @@ class User < ApplicationRecord
   def yourself_forbidden_words(filter_text = ProfanityFilter.new)
     errors.add(:yourself, 'includes forbidden words') if filter_text.profane?(yourself)
   end
+
+  def age
+    (Date.today.strftime('%Y%m%d').to_i - birth.strftime('%Y%m%d').to_i) / 10000
+  end
+
 end
