@@ -27,8 +27,8 @@
           </button>
         </div>
         <div class="swipe-button">
-          <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[@user]), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
-          <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@user], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>    
+          <%= link_to 'dislike', destroy_like_path(liker_id: current_user, likee_id: @user), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
+          <%= link_to "Like", create_like_path(liker_id: current_user, likee_id: @user), data: { turbo_method: :post }, class: 'action-button shadow animate red cicle-button' %> 
         </div>
       <% elsif user_signed_in? && @user.nil? %>
         <h1>Sorry :( <br>No People Found</h1> 

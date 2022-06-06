@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   delete "attachments/:id/purge", to: "attachments#purge" , as: "purge_attachments"
   delete 'dislike/:liker_id/:likee_id', to: 'likes#destroy', as: 'destroy_like'
-  get 'like/:liker_id/:likee_id', to: 'likes#create', as: 'create_like'
+  post 'like/', to: 'likes#create', as: 'create_like'
 end
