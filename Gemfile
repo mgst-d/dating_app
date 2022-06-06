@@ -39,6 +39,9 @@ gem 'active_storage_validations'
 # Filter forbidden words for 'yourself'
 gem 'profanity-filter', '~> 1.0'
 
+# Code coverage for Ruby
+gem 'simplecov', '~> 0.21.2'
+
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
@@ -69,6 +72,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-mocks'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
