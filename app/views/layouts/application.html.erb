@@ -25,7 +25,7 @@
      <nav>
      <ul>
         <% if user_signed_in? %>
-        <li><%= link_to 'Matches', users_matches_path(current_user), class: 'action-button shadow animate red' %></li>
+        <li><%= link_to 'Matches', matches_user_path(current_user), class: 'action-button shadow animate red' %></li>
         <li><%= link_to 'Swipe', root_path, data: { turbo_method: :get }, class: 'action-button shadow animate red' %>
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'action-button shadow animate red' %></li>
         <li><%= link_to fa_icon('gear'), user_path(current_user), class: 'action-button shadow animate red' %></li>

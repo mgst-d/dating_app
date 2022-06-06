@@ -34,7 +34,7 @@ en:
     messages:
       content_type_invalid: "has an invalid content type. Only images"
       file_size_out_of_range: "size %{file_size}. Maximum size is 2Mb"
-      limit_out_of_range: "total number is out of range"
+      limit_out_of_range: "total number is out of range. Maximum 5 photo"
       image_metadata_missing: "is not a valid image"
       dimension_min_inclusion: "must be greater than or equal to %{width} x %{height} pixel."
       dimension_max_inclusion: "must be less than or equal to %{width} x %{height} pixel."
@@ -51,3 +51,13 @@ en:
       aspect_ratio_not_landscape: "must be a landscape image"
       aspect_ratio_is_not: "must have an aspect ratio of %{aspect_ratio}"
       aspect_ratio_unknown: "has an unknown aspect ratio"
+  activerecord:
+    attributes:
+      user:
+        latitude: "Location"
+    errors:
+      models:
+        user:
+          attributes:
+            latitude:
+              blank: "can't be blank. Please, indicate your location on the map"
