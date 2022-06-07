@@ -36,7 +36,6 @@
 =======
           <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]]), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
           <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>
-          <%= link_to 'Start Chating', rooms_path %>
         </div> 
 >>>>>>> add model room
       <% end %>
