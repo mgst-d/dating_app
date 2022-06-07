@@ -1,3 +1,4 @@
+# This is roomscontroller
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
@@ -22,6 +23,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.create(name: params["room"]["name"])
+    @room = Room.create(name: params['room']['name'])
   end
 end

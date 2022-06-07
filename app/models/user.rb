@@ -22,7 +22,7 @@ class User < ApplicationRecord
            dependent: :destroy,
            inverse_of: :liker
   has_many :likers, through: :likee_likes
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, length: { maximum: 50 }
@@ -34,7 +34,7 @@ class User < ApplicationRecord
                    limit: { min: 1, max: 5 }
   validate :yourself_forbidden_words
   scope :all_except, ->(user) { where.not(id: user) }
-  after_create_commit { broacast_append_to "users" }
+  after_create_commit { broacast_append_to 'users' }
 
   def yourself_forbidden_words(filter_text = ProfanityFilter.new)
     errors.add(:yourself, 'includes forbidden words') if filter_text.profane?(yourself)
