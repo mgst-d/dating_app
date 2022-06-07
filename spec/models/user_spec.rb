@@ -11,8 +11,4 @@ RSpec.describe User, type: :model do
     expect(user.first_name).to be_an_instance_of(String)
   end
 
-  it 'returns error' do
-    expect(user.yourself).to eq('?')
-  end
-
 end
