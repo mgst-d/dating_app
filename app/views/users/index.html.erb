@@ -32,9 +32,6 @@
         </div>
       <% elsif user_signed_in? && @user.nil? %>
         <h1>Sorry :( <br>No People Found</h1> 
-          <%= link_to 'dislike', destroy_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]]), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button'%> 
-          <%= link_to 'Like', create_like_path(:liker_id=>[current_user], :likee_id=>[@users[0]], ), data: { turbo_method: :get }, class: 'action-button shadow animate red cicle-button'%>
-        </div> 
       <% end %>
     <% if !user_signed_in? %>
       <div class="container_big-button" align="center">
