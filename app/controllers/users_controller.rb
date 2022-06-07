@@ -87,7 +87,6 @@ class UsersController < ApplicationController
                                  foto: [])
   end
 
-<<<<<<< HEAD
   def users_id_list_is_nil?
     !current_user.nil? && session[:users_id].nil?
   end
@@ -103,10 +102,11 @@ class UsersController < ApplicationController
 
   def reset_session_users_id_list_after_a_period_of_time(time)
     session[:users_id] = nil if current_user.nil? || (Time.now.to_i - session[:date].to_i) > time
-=======
+  end
+  
   def get_name(user1, user2)
     users = [user1, user2].sort
     "private_#{users[0].id}_#{users[1].id}"
->>>>>>> add private room
+
   end
 end
