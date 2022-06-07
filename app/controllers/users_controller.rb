@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, @current_user], @room_name)
     @messages = @single_room.messages
 
-    render "rooms/index"
+    render "rooms/index" if @user != current_user
+
   end
 
   # GET /users/new
