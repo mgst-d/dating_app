@@ -23,6 +23,8 @@ class User < ApplicationRecord
            inverse_of: :liker
   has_many :likers, through: :likee_likes
   has_many :messages, dependent: :destroy
+  has_many :participants, dependent: :destroy
+  has_many :rooms, through: :participants
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, length: { maximum: 50 }
