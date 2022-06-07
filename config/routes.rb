@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
 
-  resources :users, :except => [:new, :edit, :update] do
+  resources :users, :except => [:new, :edit, :update, :create] do
     member do
       get 'matches'
     end
