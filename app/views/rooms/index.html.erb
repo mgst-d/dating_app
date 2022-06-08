@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-md-3"></div>
     <div id="room_container"
-      class="col-md-6 col-sm-6 bg-dark text-light">
       <% if @single_room %>
         <div id="single_room">
           <h4 class="text-center"> <%= @user&.first_name || @single_room.name %></h4>
@@ -11,9 +10,17 @@
           <%= render @single_room.messages %>
           </div>
           <%= render 'layouts/new_message_form' %>
+          <div class="chat-button">
+            <%= link_to 'Matches', matches_user_path(current_user), class: 'action-button shadow animate red' %>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="col-md-3"></div>
   </div>
-</div>
+
+
+<script>
+  var objDiv = document.querySelector("#messages");
+  objDiv.scrollTop = objDiv.scrollHeight;
+</script>

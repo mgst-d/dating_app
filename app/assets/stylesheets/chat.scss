@@ -1,0 +1,39 @@
+#room_container {
+  background: #c31432;
+  background: -webkit-linear-gradient(to right, #240b36, #c31432);
+  background: linear-gradient(to right, #240b36, #c31432);
+  border-radius: 10px;
+  padding: 10px;
+  height: 70vh !important;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    background: #f12711;
+    background: -webkit-linear-gradient(to right, #f5af19, #f12711);
+    background: linear-gradient(to right, #f5af19, #f12711);
+    border-radius: 5px;
+  }
+
+  #messages {
+    background: #ff416c;
+    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    border-radius: 5px;
+    padding: 10px 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  .chat-button {
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+    .action-button {
+      width: 143px;
+      height: 80%;
+      align-self: flex-end;
+    }
+  }
+}
