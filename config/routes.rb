@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :rooms do
-    resources :messages
-  end
   
   root 'users#index'
 
@@ -13,10 +10,14 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'     
   end
 
-  resources :users, :except => [:new, :edit, :update, :create] do
+  resources :users, except: [:new, :edit, :update, :create] do
     member do
       get 'matches'
     end
+  end
+
+  resources :rooms, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
   end
 
   delete '/attachments/:id/purge', to: 'attachments#purge' , as: 'purge_attachments'

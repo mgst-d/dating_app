@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    if ((current_user.liker_ids & current_user.likee_ids).push(current_user.id)).include?(params[:id].to_i)
     @user = User.find(params[:id])
     # @rooms = Room.public_rooms
     # @users = User.all_except(@current_user)
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
     @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, @current_user], @room_name)
     @messages = @single_room.messages
     render 'rooms/index' if @user != current_user
+    else
+      redirect_to matches_user_path(current_user)
+    end
   end
 
   # GET /users/new
