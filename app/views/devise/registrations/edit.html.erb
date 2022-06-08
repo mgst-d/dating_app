@@ -109,7 +109,6 @@
 
   <%= button_to "Delete my account", registration_path(resource_name), form: {data: { turbo_confirm: "Are you sure?" }}, method: :delete, class: 'action-button shadow animate yellow' %>
 
-  <%= link_to "Back", :back, class: 'action-button shadow animate red' %>
   <%= link_to "Profile", user_path(@user), class: 'action-button shadow animate red' %>
   </div>
 </div>
