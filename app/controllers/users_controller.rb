@@ -3,9 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    reset_session_users_id_list_after_a_period_of_time(3600)
-    generate_new_session_users_id_list_size_in_argument(100) if users_id_list_is_nil?
-    @user = User.find(session[:users_id].sample) if are_there_suitable_users?
+    session[:count] ||= 0
+    generate_new_session_users_id_list_size_in_argument(100) if users_id_list_is_nil_or_count_is_full?
+    @user = User.find(session[:users_id][session[:count]]) if are_there_suitable_users?
+    session[:count] += 1
   end
 
   # GET /users/1 or /users/1.json
@@ -86,8 +87,8 @@ class UsersController < ApplicationController
                                  foto: [])
   end
 
-  def users_id_list_is_nil?
-    !current_user.nil? && session[:users_id].nil?
+  def users_id_list_is_nil_or_count_is_full?
+    !current_user.nil? && (session[:users_id].nil? || session[:count] == session[:users_id].size)
   end
 
   def acces_to_profile?
@@ -99,12 +100,8 @@ class UsersController < ApplicationController
   end
 
   def generate_new_session_users_id_list_size_in_argument(list_size)
-    session[:date] = Time.now.to_i
     session[:users_id] = User.all.reject { |user| user.sex == current_user.sex }.shuffle.pluck(:id)[0..list_size - 1]
-  end
-
-  def reset_session_users_id_list_after_a_period_of_time(time)
-    session[:users_id] = nil if current_user.nil? || (Time.now.to_i - session[:date].to_i) > time
+    session[:count] = 0
   end
 
   def get_name(user1, user2)
