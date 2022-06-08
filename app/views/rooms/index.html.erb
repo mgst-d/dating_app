@@ -8,7 +8,7 @@
           <h4 class="text-center"> <%= @user&.first_name || @single_room.name %></h4>
           <%= turbo_stream_from @single_room %>
           <div id="messages">
-          <%= render @messages %>
+          <%= render @single_room.messages %>
           </div>
           <%= render 'layouts/new_message_form' %>
         </div>

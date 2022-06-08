@@ -10,16 +10,14 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
-    if ((current_user.liker_ids & current_user.likee_ids).push(current_user.id)).include?(params[:id].to_i)
-    @user = User.find(params[:id])
-    # @rooms = Room.public_rooms
-    # @users = User.all_except(@current_user)
-    @room = Room.new
-    @message = Message.new
-    @room_name = get_name(@user, current_user)
-    @single_room = Room.where(name: @room_name).first || Room.create_private_room([@user, @current_user], @room_name)
-    @messages = @single_room.messages
-    render 'rooms/index' if @user != current_user
+    if acces_to_profile?
+      @user = User.find(params[:id])
+      # @room = Room.new
+      @message = Message.new
+      @room_name = get_name(@user, current_user)
+      @single_room = Room.find_by(name: @room_name) || Room.create_private_room([@user, @current_user], @room_name)
+      # @messages = @single_room.messages
+      render 'rooms/index' if @user != current_user
     else
       redirect_to matches_user_path(current_user)
     end
@@ -90,6 +88,10 @@ class UsersController < ApplicationController
 
   def users_id_list_is_nil?
     !current_user.nil? && session[:users_id].nil?
+  end
+
+  def acces_to_profile?
+    (current_user.liker_ids & current_user.likee_ids).push(current_user.id).include?(params[:id].to_i)
   end
 
   def are_there_suitable_users?
