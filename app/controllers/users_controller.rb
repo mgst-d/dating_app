@@ -1,6 +1,6 @@
 # This is UserController
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[edit update destroy]
 
   def index
     session[:count] ||= 0
@@ -12,12 +12,10 @@ class UsersController < ApplicationController
   # GET /users/1 or /users/1.json
   def show
     if acces_to_profile?
-      @user = User.find(params[:id])
-      # @room = Room.new
+      @user = User.find(params[:id]) if user_exist?
       @message = Message.new
       @room_name = get_name(@user, current_user)
       @single_room = Room.find_by(name: @room_name) || Room.create_private_room([@user, @current_user], @room_name)
-      # @messages = @single_room.messages
       render 'rooms/index' if @user != current_user
     else
       redirect_to matches_user_path(current_user)
@@ -88,7 +86,7 @@ class UsersController < ApplicationController
   end
 
   def users_id_list_is_nil_or_count_is_full?
-    !current_user.nil? && (session[:users_id].nil? || session[:count] == session[:users_id].size)
+    !current_user.nil? && (session[:users_id].blank? || session[:count] == session[:users_id].size)
   end
 
   def acces_to_profile?
@@ -97,6 +95,10 @@ class UsersController < ApplicationController
 
   def are_there_suitable_users?
     !current_user.nil? && !session[:users_id].empty?
+  end
+
+  def user_exist?
+    User.find(params[:id])
   end
 
   def generate_new_session_users_id_list_size_in_argument(list_size)
