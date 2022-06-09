@@ -5,6 +5,29 @@
   </p>
 
   <p>
+    <strong>Foto:</strong>  
+  </p>
+  
+  <div id="carouselExampleInterval-main" class="carousel slide carousel-dark"      data-interval="false">
+      <div class="carousel-inner">
+        <% user.foto.each_with_index do |foto, index| %>
+        <%active = index == 0? "active" : ""%>
+        <div class="carousel-item <%=active%>" >
+          <%= image_tag foto, class: "carousel-foto"%>
+        </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <p>
     <strong>Last name:</strong>
     <%= user.last_name %>
   </p>
@@ -33,7 +56,6 @@
 
   <p>
     <strong>Hobbies:</strong>
-    
     <% if user.hobbies != [] %>
       <% user.hobbies.each do |hobby| %>
         <% if user.hobbies.last == hobby %>
@@ -54,26 +76,5 @@
     <strong>Longitude:</strong>
     <%= user.longitude %>
   </p>
-
-  <p>
-    <strong>Foto:</strong>  
-  </p>
-      <div id="carouselExampleInterval-main" class="carousel slide carousel-dark"      data-interval="false">
-      <div class="carousel-inner">
-        <% user.foto.each_with_index do |foto, index| %>
-        <%active = index == 0? "active" : ""%>
-      <div class="carousel-item <%=active%>" >
-        <%= image_tag foto, class: "carousel-foto"%>
-      </div>
-        <% end %>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+  
 </div>
