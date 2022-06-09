@@ -102,7 +102,7 @@ class UsersController < ApplicationController
   end
 
   def generate_new_session_users_id_list_size_in_argument(list_size)
-    session[:users_id] = User.where.not("sex = ?", current_user.sex).shuffle.pluck(:id)[0..list_size - 1]
+    session[:users_id] = User.where.not('sex = ?', current_user.sex).shuffle.pluck(:id)[0..list_size - 1]
     session[:count] = 0
   end
 
