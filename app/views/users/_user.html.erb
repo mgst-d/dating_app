@@ -1,11 +1,7 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>First name:</strong>
-    <%= user.first_name %>
-  </p>
-
-  <p>
-    <strong>Foto:</strong>  
+    <strong>Name:</strong>
+    <%= "#{user.first_name} #{user.last_name}" %>
   </p>
   
   <div id="carouselExampleInterval-main" class="carousel slide carousel-dark"      data-interval="false">
@@ -26,12 +22,8 @@
         <span class="visually-hidden">Next</span>
     </button>
   </div>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= user.last_name %>
-  </p>
-
+  <br>
+  
   <p>
     <strong>Age:</strong>
     <%= user.age %>
@@ -41,22 +33,24 @@
     <strong>Sex:</strong>
     <%= user.sex %>
   </p>
-
-  <p>
-    <strong>Work:</strong>
-    <% unless user.work.nil? %>
+  
+  <% unless user.work.nil? %>
+    <p>
+      <strong>Work:</strong>
       <%= user.work.title %>
-    <% end %>
-  </p>
+    </p>
+  <% end %>
 
-  <p>
-    <strong>Yourself:</strong>
-    <%= user.yourself %>
-  </p>
+  <% unless user.yourself.empty? %>
+    <p>
+      <strong>Yourself:</strong>
+      <%= user.yourself %>
+    </p>
+  <% end %>
 
-  <p>
-    <strong>Hobbies:</strong>
-    <% if user.hobbies != [] %>
+  <% unless user.hobbies.empty? %>
+    <p>
+      <strong>Hobbies:</strong>
       <% user.hobbies.each do |hobby| %>
         <% if user.hobbies.last == hobby %>
           <%= "#{hobby.title}" %>
@@ -64,8 +58,8 @@
           <%= "#{hobby.title}, " %>
         <% end %>
       <% end %> 
-    <% end %>
-  </p>  
+    </p>
+  <% end %>  
 
   <p class="hidden-item">
     <strong>Latitude:</strong>
