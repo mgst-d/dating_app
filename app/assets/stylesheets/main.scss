@@ -64,6 +64,7 @@ main {
     left: 28%;
     bottom: 26%;
     padding: 20px;
+    box-shadow: 3px 3px 15px black;
 
     .hobbies {
       display: grid;
@@ -84,7 +85,7 @@ main {
 
     .edit-btn {
       display: grid;
-      grid-template-columns: 120px 240px;
+      grid-template-columns: 135px 1fr;
       grid-auto-rows: 80px;
     }
   }
@@ -189,12 +190,16 @@ main {
   }
 }
 
+.mapboxgl-canvas {
+  width: 100%;
+  height: 100%;
+}
 #map {
   margin: 0 20px;
   flex: 0 1 700px;
-  height: 50%;
+  height: 90% !important;
   border-radius: 20px;
-  shadow-box: 3px 3px 10px black;
+  box-shadow: 3px 3px 15px black;
 }
 
 .swipe-button {

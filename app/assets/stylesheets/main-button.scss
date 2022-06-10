@@ -12,27 +12,21 @@
     font-family: "Sansita One", cursive;
     font-size: 26px;
     font-weight: 500;
-    margin: 10px auto;
     padding: 20px;
     height: 270px;
     width: 270px;
     text-decoration: none;
     text-transform: capitalize;
-
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     border-radius: 12px;
-
     -webkit-box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 15px 0px #192992, 0px 10px 25px rgba(0, 0, 0, 0.5);
-
     margin: 50px auto;
-
     border-color: #4c61e0;
     border-width: 10px;
     border-radius: 50%;
-    padding: 20px;
 
     &:active {
       box-shadow: 0px 3px 0px #3448bb, 0px 3px 6px rgba(0, 0, 0, 0.9);

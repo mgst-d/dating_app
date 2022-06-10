@@ -38,10 +38,6 @@ geolocate.on('geolocate', function() {
 var longitude = JSON.parse("<%= j user[:longitude]%>")
 var latitude = JSON.parse("<%= j user[:latitude]%>")
 var nameUser = "<%= j user[:first_name]%>"
-// var srcUserFoto = "<%= j user[:foto]%>"
-console.log('hello')
-// <img src="" style="width: 50px; margin: 3px auto;">
-console.log(longitude + '  //  : '+latitude)
 var marker_test = new mapboxgl.Marker()
 .setLngLat([latitude,longitude])
 .setPopup(new mapboxgl.Popup().setHTML(`
@@ -62,7 +58,7 @@ var marker_test = new mapboxgl.Marker()
       </div>
       <div class="modal-footer">
         <button type="button" class="action-button shadow animate red" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'Chat', user, class: 'action-button shadow animate green' %>
+        <%= link_to 'Chat', user, class: 'action-button shadow animate green'%>
         <%= link_to 'Dislike', destroy_like_path(liker_id: current_user, likee_id: user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'action-button shadow animate yellow'%> 
       </div>
     </div>
@@ -97,10 +93,13 @@ var marker_test = new mapboxgl.Marker()
 <% end %>
 
 function createModal(num){
-  console.log(num)
-  const modal = document.querySelector(`#exampleModal${num}`)
-  document.body.prepend(modal)
-  console.log(modal)
+  const modal = document.querySelector(`#exampleModal${num}`);
+  document.body.prepend(modal);
+  const arrayBackdropModal = document.querySelectorAll('.modal-backdrop');
+  const arrayLength = arrayBackdropModal.length;
+  arrayBackdropModal.forEach((item, index)=>{
+    if(index !== arrayLength - 1) item.remove()
+  })
 }
 </script>
 
