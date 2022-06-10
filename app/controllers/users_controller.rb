@@ -3,10 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
 
   def index
-    session[:count] ||= 0
-    generate_new_session_users_id_list_size_in_argument(100) if users_id_list_is_nil_or_count_is_full?
-    @user = User.find(session[:users_id][session[:count]]) if are_there_suitable_users?
-    session[:count] += 1
+    @user = UsersGenerator.call(current_user, session)
   end
 
   # GET /users/1 or /users/1.json
@@ -85,25 +82,12 @@ class UsersController < ApplicationController
                                  foto: [])
   end
 
-  def users_id_list_is_nil_or_count_is_full?
-    !current_user.nil? && (session[:users_id].blank? || session[:count] == session[:users_id].size)
-  end
-
   def acces_to_profile?
     (current_user.liker_ids & current_user.likee_ids).push(current_user.id).include?(params[:id].to_i)
   end
 
-  def are_there_suitable_users?
-    !current_user.nil? && !session[:users_id].empty?
-  end
-
   def user_exist?
     User.find(params[:id])
-  end
-
-  def generate_new_session_users_id_list_size_in_argument(list_size)
-    session[:users_id] = User.where.not(sex: current_user.sex).shuffle.pluck(:id)[0..list_size - 1]
-    session[:count] = 0
   end
 
   def get_name(user1, user2)
