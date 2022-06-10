@@ -85,7 +85,7 @@ main {
 
     .edit-btn {
       display: grid;
-      grid-template-columns: 120px 240px;
+      grid-template-columns: 135px 1fr;
       grid-auto-rows: 80px;
     }
   }

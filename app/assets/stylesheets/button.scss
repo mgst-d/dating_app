@@ -12,6 +12,14 @@
   font-size: 20px;
   color: #fff;
   text-decoration: none;
+  text-align: center;
+  height: 50px;
+
+  &:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    border-bottom: 1px solid;
+  }
 }
 
 .cicle-button {
@@ -41,13 +49,6 @@
   background-color: #f2cf66;
   border-bottom: 5px solid #d1b358;
   text-shadow: 0px -2px #d1b358;
-}
-
-.action-button:active {
-  transform: translate(0px, 5px);
-  -webkit-transform: translate(0px, 5px);
-  border-bottom: 1px solid;
-  margin-bottom: 15px;
 }
 
 .disabled {
