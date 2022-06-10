@@ -4,74 +4,21 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   
-  <div>
-    <%= f.label :first_name, style: "display: block" %>
-    <%= f.text_field :first_name %>
-  </div>
+  <%= render 'form', f: f %>
 
-  <div>
-    <%= f.label :last_name, style: "display: block" %>
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div>
-    <%= f.label :birth, style: "display: block" %>
-    <%= f.date_select :birth, { start_year: Date.today.year - 122, end_year: Date.today.year } %>
-  </div>
-
-  <div>
-    <%= f.label :sex, style: "display: block" %>
-    <%= f.radio_button :sex, 'Male' %>
-    <%= f.label :sex, 'Male' %>
-    <%= f.radio_button :sex, 'Female' %>
-    <%= f.label :sex, 'Female' %>
-  </div>
-
-  <div>
-    <%= f.label :work_id, style: "display: block" %>
-    <%= f.select :work_id, options_for_select(Work.all.collect { |work| [work.title, work.id] }), { include_blank: '-Select work-' } %>
-  </div>
-
-  <div>
-    <%= f.label :yourself, style: "display: block" %>
-    <%= f.text_area :yourself %>
-  </div>
-
-  <div>
-    <%= f.label :hobbies, style: "display: block" %> 
-    <div class="hobbies">
-    <%= f.collection_check_boxes(:hobby_ids, Hobby.all, :id, :title, {}, multiple: true) %>
-    </div> 
-  </div>
-
-  <div class="hidden-item">
-    <%= f.label :latitude, style: "display: block" %>
-    <%= f.text_field :latitude %>
-  </div>
-
-  <div class="hidden-item">
-    <%= f.label :longitude, style: "display: block" %>
-    <%= f.text_field :longitude %>
-  </div>
-
-  <div>
-    <%= f.label :foto, style: "display: block" %>
-    <%= f.file_field :foto, multiple: true, class: 'action-button shadow animate red' %>
-  </div>
-
-    <p>
-    <strong>Foto:</strong> 
-    </p>
-    <div class="foto-main-wrapper">
-    <% @user.foto.each do |foto| %>
-      <% unless foto.id.nil? %>
-        <div class="foto-preview-wrapper">
-        <%= image_tag foto, class: "foto-preview" %>
-        <%= link_to "", purge_attachments_path(foto), data: { turbo_method: :delete }%>
-        </div>
-      <% end %>
+  <p>
+  <strong>Foto:</strong> 
+  </p>
+  <div class="foto-main-wrapper">
+  <% @user.foto.each do |foto| %>
+    <% unless foto.id.nil? %>
+      <div class="foto-preview-wrapper">
+      <%= image_tag foto, class: "foto-preview" %>
+      <%= link_to "", purge_attachments_path(foto), data: { turbo_method: :delete }%>
+      </div>
     <% end %>
-    </div>
+  <% end %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -109,51 +56,8 @@
 
   <%= button_to "Delete my account", registration_path(resource_name), form: {data: { turbo_confirm: "Are you sure?" }}, method: :delete, class: 'action-button shadow animate yellow' %>
 
-  <%= link_to "Profile", user_path(@user), class: 'action-button shadow animate red' %>
+  <%= link_to "Back", user_path(@user), class: 'action-button shadow animate red' %>
   </div>
 </div>
-<div id='map'></div>
 
-<script>
-
-mapboxgl.accessToken = 'pk.eyJ1Ijoia2Vsenp6ZXIiLCJhIjoiY2wzMXVxNjk4MGZxcjNpb2pxd3lqczRyaiJ9.IvHxJFJQDY5yoISmeC5Low';
-var map = new mapboxgl.Map({
-container: 'map', // container ID
-style: 'mapbox://styles/mapbox/streets-v11', // style URL
-center: [27.54, 53.9], // starting position [lng, lat]
-zoom: 11 // starting zoom
-});
-
-map.on('style.load', function() {
-map.on('click', function(e) {
-var coordinates = e.lngLat;
-var coordinatesLongitude = coordinates.lng;
-var coordinatesLatitude = coordinates.lat;
-document.querySelector('#user_latitude').value = coordinatesLongitude;
-document.querySelector('#user_longitude').value = coordinatesLatitude;
-console.log(coordinates)
-
-// this is create popup
-new mapboxgl.Popup()
-  .setLngLat(coordinates)
-  .setHTML('You are here!')
-  .addTo(map);
-  });
-});
-
-// Initialize the geolocate control.
-var geolocate = new mapboxgl.GeolocateControl({
-  positionOptions: {
-    enableHighAccuracy: true
-  },
-  trackUserLocation: true
-});
-
-// Add the control to the map.
-map.addControl(new mapboxgl.NavigationControl());
-map.addControl(geolocate);
-geolocate.on('geolocate', function(e) {
-  document.querySelector('#user_latitude').value = e.coords.latitude;
-document.querySelector('#user_longitude').value = e.coords.longitude;
-});
-</script>
+<%= render 'map' %>
