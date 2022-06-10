@@ -64,6 +64,7 @@ main {
     left: 28%;
     bottom: 26%;
     padding: 20px;
+    box-shadow: 3px 3px 15px black;
 
     .hobbies {
       display: grid;
@@ -198,7 +199,7 @@ main {
   flex: 0 1 700px;
   height: 90% !important;
   border-radius: 20px;
-  shadow-box: 3px 3px 10px black;
+  box-shadow: 3px 3px 15px black;
 }
 
 .swipe-button {
