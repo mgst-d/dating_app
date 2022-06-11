@@ -1,7 +1,7 @@
 <div id="<%= dom_id user %>">
   <p>
     <strong>Name:</strong>
-    <%= "#{user.first_name} #{user.last_name}" %>
+    <%= full_name(user) %>
   </p>
   
   <div id="carouselExampleInterval-main" class="carousel slide carousel-dark"      data-interval="false">
@@ -26,7 +26,7 @@
   
   <p>
     <strong>Age:</strong>
-    <%= user.age %>
+    <%= age(user) %>
   </p>
 
   <p>

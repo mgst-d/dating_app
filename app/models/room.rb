@@ -1,7 +1,5 @@
 # This is room_chatting model
 class Room < ApplicationRecord
-  # validates :name, uniqueness: true
-  scope :public_rooms, -> { where(is_private: false) }
   after_create_commit { broadcast_if_public }
 
   has_many :messages, dependent: :destroy
