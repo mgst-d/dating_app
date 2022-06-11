@@ -35,7 +35,6 @@ class User < ApplicationRecord
   validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp],
                    limit: { min: 1, max: 5 }
   validate :yourself_forbidden_words
-  # scope :all_except, ->(user) { where.not(id: user) }
   after_create_commit { broadcast_append_to 'users' }
 
   def yourself_forbidden_words(filter_text = ProfanityFilter.new)
