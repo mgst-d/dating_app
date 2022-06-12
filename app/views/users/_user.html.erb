@@ -34,21 +34,21 @@
     <%= user.sex %>
   </p>
   
-  <% unless user.work.nil? %>
+  <% unless user.work.blank? %>
     <p>
       <strong>Work:</strong>
       <%= user.work.title %>
     </p>
   <% end %>
 
-  <% unless user.yourself.empty? %>
+  <% unless user.yourself.blank? %>
     <p>
-      <strong>Yourself:</strong>
+      <strong>About me:</strong>
       <%= user.yourself %>
     </p>
   <% end %>
 
-  <% unless user.hobbies.empty? %>
+  <% unless user.hobbies.blank? %>
     <p>
       <strong>Hobbies:</strong>
       <% user.hobbies.each do |hobby| %>

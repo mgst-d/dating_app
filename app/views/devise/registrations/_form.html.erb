@@ -23,7 +23,7 @@
 
 <div>
   <%= f.label :work_id, style: "display: block" %>
-  <%= f.select :work_id, Work.all.collect { |work| [work.title, work.id] }, { selected: current_user.work_id, include_blank: '-Select work-' } %>
+  <%= f.select :work_id, Work.all.collect { |work| [work.title, work.id] }, { selected: @user.work_id, include_blank: '-Select work-' } %>
 </div>
 
 <div>
