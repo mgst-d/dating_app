@@ -172,7 +172,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
 
@@ -188,7 +188,7 @@ RSpec.describe User, type: :model do
         subject {@user}
         
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -206,7 +206,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -224,7 +224,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -242,7 +242,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -260,7 +260,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
   
@@ -276,7 +276,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
   
@@ -292,7 +292,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -310,7 +310,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
   
@@ -326,7 +326,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
     end
@@ -341,7 +341,7 @@ RSpec.describe User, type: :model do
         subject {@user}
         
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
 
@@ -356,7 +356,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
 
@@ -371,7 +371,7 @@ RSpec.describe User, type: :model do
         subject {@user}
 
         it 'should returns invalid subject' do
-          expect(subject .valid?).to be_falsey
+          expect(subject.valid?).to be_falsey
         end
       end
 
