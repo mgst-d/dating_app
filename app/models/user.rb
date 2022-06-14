@@ -30,7 +30,8 @@ class User < ApplicationRecord
   validates :last_name, length: { maximum: 50 }
   validates :sex, presence: true
   validates :latitude, presence: true
-  validates :birth, presence: true, comparison: { greater_than: Time.gm(1900), less_than: Time.zone.now }
+  validates :birth, presence: true, comparison: { greater_than: Time.gm(1900),
+                                                  less_than: Time.zone.today - 18.years + 1.day, message: 'Only 18+' }
   validates :yourself, length: { maximum: 255 }
   validates :foto, attached: true, size: { less_than: 2.megabytes }, content_type: %i[png jpg jpeg bmp],
                    limit: { min: 1, max: 5 }
