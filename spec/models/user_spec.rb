@@ -258,7 +258,7 @@ RSpec.describe User, type: :model do
         end
       end
   
-      context 'When a birth is greater than Time.now' do
+      context 'When the birth is earlier than Time.zone.today - 18.years + 1.day' do
         
         subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '2990-01-01', sex: 'Man', 
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
