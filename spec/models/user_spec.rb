@@ -30,12 +30,11 @@ RSpec.describe User, type: :model do
   context 'Users initialize tests' do
   
     before(:each) do
-      @user = user_with_valid_params
-      @user.foto_blobs << photo_with_valid_params
-      @user.save
+      user_with_valid_params.foto_blobs << photo_with_valid_params
+      user_with_valid_params.save
     end
 
-    subject { @user }
+    subject { user_with_valid_params }
 
     context 'User first name' do
       it 'returns correct name' do
@@ -141,35 +140,34 @@ RSpec.describe User, type: :model do
   context 'User validations tests' do
    
     after(:each) do
-      @user.destroy
+      subject.destroy
     end
     
     context 'When all params OK' do
-      before(:each) do
-        @user = user_with_valid_params
-        @user.foto_blobs << photo_with_valid_params
-        @user.save
-      end
 
-      subject {@user}
+      before(:each) do
+        user_with_valid_params.foto_blobs << photo_with_valid_params
+        user_with_valid_params.save
+      end
+  
+      subject { user_with_valid_params }
 
       it 'should returns valid subject' do
         expect(subject.valid?).to be_truthy
       end
     end
 
-    context 'first name validations' do
+    describe 'first name validations' do
       context 'When first name is not present' do
+
+        subject { described_class.new(last_name: 'Smith', birth: '1990-01-01', sex: 'Man',
+                                      yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         
         before(:each) do
-          @user = described_class.new(last_name: 'Smith', birth: '1990-01-01', sex: 'Man', yourself: 'sdads', 
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru',
-                                      work_id: 5, password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -177,33 +175,32 @@ RSpec.describe User, type: :model do
       end
 
       context 'When first name has more than 50 characters' do        
-        before(:each) do
-          @user = described_class.new(first_name: ('Alexa' * 11), last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
-                                      yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
-                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
-        end
-
-        subject {@user}
         
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
-        end
-      end
-    end
-
-    context 'Last name validations' do
-      context 'When Last name has more than 50 characters' do
-        before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: ('Smith' * 11), birth: '1990-01-01', sex: 'Man', 
+        subject { described_class.new(first_name: ('Alexa' * 11), last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
-                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
+        
+        before(:each) do
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
 
-        subject {@user}
+        it 'should returns invalid subject' do
+          expect(subject.valid?).to be_falsey
+        end
+      end
+    end
+
+    describe 'Last name validations' do
+      context 'When Last name has more than 50 characters' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: ('Smith' * 11), birth: '1990-01-01', sex: 'Man', 
+                                      yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
+        before(:each) do
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
+        end
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -211,17 +208,16 @@ RSpec.describe User, type: :model do
       end
     end
   
-    context 'Sex validations' do
+    describe 'Sex validations' do
       context 'When sex is not present' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', yourself: 'sdads',
+                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', 
+                                      work_id: 5, password: 'dsdfss')}
         before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', yourself: 'sdads',
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -229,17 +225,16 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'latitude validations' do
+    describe 'latitude validations' do
       context 'When latitude is not present' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
+                                      yourself: 'sdads', longitude: 53.905427341494146, email: 'Ti@mail.ru', 
+                                      work_id: 5, password: 'dsdfss') }
         before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', yourself: 'sdads',
-                                      longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -247,33 +242,31 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'birth validations' do
+    describe 'birth validations' do
       context 'When birth is not present' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', sex: 'Man', yourself: 'sdads',
+                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', 
+                                      work_id: 5, password: 'dsdfss') }
         before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', sex: 'Man', yourself: 'sdads',
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
         end
       end
   
-      context 'When a birth is greater than Time.now' do
+      context 'When the birth is earlier than Time.zone.today - 18.years + 1.day' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '2990-01-01', sex: 'Man', 
+                                      yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '2990-01-01', sex: 'Man', yourself: 'sdads',
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -281,15 +274,14 @@ RSpec.describe User, type: :model do
       end
   
       context 'When a birth is less than 1900-01-01' do
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '990-01-01', sex: 'Man', 
+                                      yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '990-01-01', sex: 'Man', yourself: 'sdads',
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -297,17 +289,17 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'yourself validations' do
+    describe 'yourself validations' do
       context 'When yourself has more than 255 characters' do
-        before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', yourself: ('sdads' * 52),
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
+                                      yourself: ('sdads' * 52), latitude: 27.53037290421605, 
+                                      longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
+                                      password: 'dsdfss') }
+        before(:each) do  
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -315,15 +307,14 @@ RSpec.describe User, type: :model do
       end
   
       context 'When yourself has forbidden words' do
-        before(:each) do
-          @user = described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', yourself: 'fuck',
-                                      latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
-                                      password: 'dsdfss') 
-          @user.foto_blobs << photo_with_valid_params
-          @user.save
+        
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
+                                      yourself: 'fuck', latitude: 27.53037290421605, longitude: 53.905427341494146, 
+                                      email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
+        before(:each) do  
+          subject.foto_blobs << photo_with_valid_params
+          subject.save
         end
-
-        subject {@user}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -331,14 +322,13 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'foto validations' do
+    describe 'foto validations' do
       context 'When foto is not present' do
-        before(:each) do
-          @user = user_with_valid_params 
-          @user.save
+        before(:each) do 
+          user_with_valid_params.save
         end
 
-        subject {@user}
+        subject {user_with_valid_params}
         
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -347,13 +337,12 @@ RSpec.describe User, type: :model do
 
       context 'When foto is greater than 2Mb' do
         before(:each) do
-          @user = user_with_valid_params
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', content_type: 'image/jpeg', 
-                                                      byte_size: 3299946)
-          @user.save
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', 
+                                                                       content_type: 'image/jpeg', byte_size: 3299946)
+          user_with_valid_params.save
         end
 
-        subject {@user}
+        subject {user_with_valid_params}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -362,13 +351,12 @@ RSpec.describe User, type: :model do
 
       context 'When foto content type is not image' do
         before(:each) do
-          @user = user_with_valid_params
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', content_type: 'video/avi', 
-                                                      byte_size: 299946)
-          @user.save
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', 
+                                                                       content_type: 'video/avi', byte_size: 299946)
+          user_with_valid_params.save
         end
 
-        subject {@user}
+        subject {user_with_valid_params}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
@@ -377,17 +365,22 @@ RSpec.describe User, type: :model do
 
       context 'When uploading more than 5 photos' do
         before(:each) do
-          @user = user_with_valid_params
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff1', checksum: '11', content_type: 'image/jpeg', byte_size: 299946)
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff2', checksum: '12', content_type: 'image/jpeg', byte_size: 299946)
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff3', checksum: '13', content_type: 'image/jpeg', byte_size: 299946)
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff4', checksum: '14', content_type: 'image/jpeg', byte_size: 299946)
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff5', checksum: '15', content_type: 'image/jpeg', byte_size: 299946)
-          @user.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff6', checksum: '16', content_type: 'image/jpeg', byte_size: 299946)
-          @user.save
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff1', checksum: '11', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff2', checksum: '12', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff3', checksum: '13', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff4', checksum: '14', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff5', checksum: '15', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.foto_blobs << ActiveStorage::Blob.new(filename: 'ddff6', checksum: '16', 
+                                                                       content_type: 'image/jpeg', byte_size: 299946)
+          user_with_valid_params.save
         end
 
-        subject {@user}
+        subject {user_with_valid_params}
 
         it 'should returns invalid subject' do
           expect(subject.valid?).to be_falsey
