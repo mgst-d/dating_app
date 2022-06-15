@@ -2,7 +2,7 @@ main {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: row;
   background: #fff;
   border-radius: 10px;
@@ -54,15 +54,22 @@ main {
     padding: 40px;
   }
 
-  .main-content {
-    margin: 0 20px;
+  .main-content-reg {
+    margin: 0;
     background-color: #fff;
     border-radius: 10px;
     border-radius: 10px;
-    top: 10%;
-    right: 34%;
-    left: 28%;
-    bottom: 26%;
+    flex: 0 1 300px;
+    padding: 20px;
+    box-shadow: 3px 3px 15px black;
+  }
+
+  .main-content {
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    border-radius: 10px;
+    flex: 1 1 200px;
     padding: 20px;
     box-shadow: 3px 3px 15px black;
 
@@ -94,15 +101,10 @@ main {
     width: 90%;
     height: 100%;
     box-shadow: 3px 3px 10px black;
-    // top: auto;
-    // right: auto;
-    // left: auto;
-    // bottom: auto;
-    // margin-right: auto;
 
     #carouselExampleControls {
       max-height: none;
-      height: 550px;
+      height: 500px;
 
       .carousel-inner {
 
@@ -123,7 +125,7 @@ main {
           align-items: center;
           
           img {
-            max-height: 550px;
+            max-height: 500px;
             max-width: none;
           }
         }
@@ -194,12 +196,27 @@ main {
   width: 100%;
   height: 100%;
 }
+
 #map {
   margin: 0 20px;
-  flex: 0 1 700px;
+  flex: 1 1 200px;
   height: 90% !important;
   border-radius: 20px;
   box-shadow: 3px 3px 15px black;
+}
+
+.map-small {
+  margin: 0;
+  flex: 1 1 200px;
+  height: 50% !important;
+  
+  #map {
+
+  }
+}
+
+.add-foto-form {
+  width: 100%;
 }
 
 .swipe-button {
