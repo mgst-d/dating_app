@@ -9,6 +9,7 @@ html,
 body,
 .body-wrapper {
   height: 100%;
+  max-height: 1000px;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -35,7 +36,7 @@ body {
 header,
 main,
 footer {
-  // width: 100%;
+
 }
 
 .hidden-item {

@@ -21,36 +21,8 @@ center: [latitudeMap, longitudeMap], // starting position [lng, lat]
 zoom: 11 // starting zoom
 });
 
-// map.on('style.load', function() {
-// map.on('click', function(e) {
-// var coordinates = e.lngLat;
-// var coordinatesLongitude = coordinates.lng;
-// var coordinatesLatitude = coordinates.lat;
-// document.querySelector('#user_latitude').value = coordinatesLongitude;
-// document.querySelector('#user_longitude').value = coordinatesLatitude;
-// console.log(coordinates)
-
-
-
 var marker_test = new mapboxgl.Marker()
 .setLngLat([latitudeMap, longitudeMap])
 .addTo(map);
 marker_test.togglePopup(); 
-// Initialize the geolocate control.
-// var geolocate = new mapboxgl.GeolocateControl({
-//   positionOptions: {
-//     enableHighAccuracy: true
-//   },
-//   trackUserLocation: true
-// });
-
-// Add the control to the map.
-// map.addControl(new mapboxgl.NavigationControl());
-// map.addControl(geolocate);
-// geolocate.on('geolocate', function(e) {
-//   document.querySelector('#user_latitude').value = e.coords.latitude;
-// document.querySelector('#user_longitude').value = e.coords.longitude;
-// });
-// })
-// })
 </script>

@@ -1,11 +1,15 @@
+.smodal {
+  display: none;
+}
+
 main {
   position: relative;
   flex: 1 1 auto;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: row;
   background: #fff;
-  border-radius: 10px;
+  // border-radius: 10px;
 
   .main-background {
     position: absolute;
@@ -54,15 +58,22 @@ main {
     padding: 40px;
   }
 
-  .main-content {
-    margin: 0 20px;
+  .main-content-reg {
+    margin: 0;
     background-color: #fff;
     border-radius: 10px;
     border-radius: 10px;
-    top: 10%;
-    right: 34%;
-    left: 28%;
-    bottom: 26%;
+    flex: 0 1 300px;
+    padding: 20px;
+    box-shadow: 3px 3px 15px black;
+  }
+
+  .main-content {
+    margin: 0;
+    background-color: #fff;
+    border-radius: 10px;
+    border-radius: 10px;
+    flex: 1 1 200px;
     padding: 20px;
     box-shadow: 3px 3px 15px black;
 
@@ -79,7 +90,7 @@ main {
     }
 
     .description-text {
-      max-width: 550px;
+      max-width: 55%;
       text-align: justify;
     }
 
@@ -94,15 +105,10 @@ main {
     width: 90%;
     height: 100%;
     box-shadow: 3px 3px 10px black;
-    // top: auto;
-    // right: auto;
-    // left: auto;
-    // bottom: auto;
-    // margin-right: auto;
 
     #carouselExampleControls {
       max-height: none;
-      height: 550px;
+      height: 500px;
 
       .carousel-inner {
 
@@ -123,7 +129,7 @@ main {
           align-items: center;
           
           img {
-            max-height: 550px;
+            max-height: 500px;
             max-width: none;
           }
         }
@@ -194,12 +200,23 @@ main {
   width: 100%;
   height: 100%;
 }
+
 #map {
   margin: 0 20px;
-  flex: 0 1 700px;
+  flex: 1 1 200px;
   height: 90% !important;
   border-radius: 20px;
   box-shadow: 3px 3px 15px black;
+}
+
+.map-small {
+  margin: 0;
+  flex: 1 1 200px;
+  height: 50% !important;
+}
+
+.add-foto-form {
+  width: 100%;
 }
 
 .swipe-button {
@@ -234,4 +251,109 @@ main {
 }
 .modal-footer {
   height: 105px;
+}
+
+.burger {
+  display: none;
+  font-size: 35px !important;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 50px;
+  width: 50px;
+  padding: 0 !important;
+  z-index: 11;
+  transition: all 1s;
+}
+
+.burger-active {
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 800px){
+  .main-menu {
+    display: none;
+  }
+
+  .main-menu-active {
+    display: block !important;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    padding: 0 !important;
+
+    a {
+      height: 60px;
+      width: 350px;
+      margin: 20px;
+    }
+  }
+  
+  .burger {
+    display: flex;
+    cursor: pointer;
+  }  
+  
+  .main-info {
+    flex-direction: column;
+    align-items: center !important;
+    padding: 10px 5px !important;
+
+    .map-small {
+      width: 100%;
+      height: 100px;
+      margin: 20px;
+
+      #map {
+        margin: 0;
+      }
+    }
+
+    #map {
+      width: 100%;
+      margin: 20px;
+    }
+  }
+
+  .edit-btn {
+    grid-template-columns: 1fr !important;
+
+    .action-button {
+      max-width: 235px;
+    }
+  }
+
+  .swipe-button {
+    width: auto !important;
+
+    & a {
+      width: 70px !important;
+      height: 70px;
+      font-size: 17px;
+    }
+  }
+
+  .smodal-active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffffdb;
+    z-index: 3;
+  }
+
+  .body-lock {
+    overflow: hidden;
+  }
+
+  .description-text {
+    max-width: 95% !important;
+  }
 }
