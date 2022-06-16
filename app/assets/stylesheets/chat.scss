@@ -1,7 +1,7 @@
 #room_container {
   background: #c31432;
   background: -webkit-linear-gradient(to right, #240b36, #c31432);
-  background: linear-gradient(to right, #240b36, #c31432);
+  background: linear-gradient(to right, #700638, #c31432);
   border-radius: 10px;
   padding: 10px;
   height: 70vh !important;
@@ -11,15 +11,17 @@
 
   h4 {
     background: #f12711;
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);
-    background: linear-gradient(to right, #f5af19, #f12711);
+    background: -webkit-linear-gradient(to right, #c4092f, #f12711);
+    background: linear-gradient(to right, #7e083f, #c31432);
     border-radius: 5px;
+    font-size: 30px;
+    color: #FAEBD7;
   }
 
   #messages {
     background: #ff416c;
     background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, #a90234, #fc3e7e);
     border-radius: 5px;
     padding: 10px 20px;
     overflow: scroll;
