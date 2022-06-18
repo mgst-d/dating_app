@@ -15,19 +15,13 @@ RSpec.describe User, type: :model do
     it { should have_many(:participants)}  
     it { should have_many(:rooms)}  
   end
-  
-  context 'validations' do
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:password) }
-    it { should validate_length_of(:password).is_at_least(6) }
-  end
 
   let(:photo_with_valid_params) { ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', content_type: 'image/jpeg', byte_size: 299946)}
   let(:user_with_valid_params) {described_class.new(first_name: 'Alex', last_name: 'Smith', birth: Date.new(1990,01,01), sex: 'Man', 
                                 yourself: 'sdsd', latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', 
                                 work_id: 5, password: 'dsdfss') }
   
-  context 'Users initialize tests' do
+  describe 'Users initialize tests' do
   
     before(:each) do
       user_with_valid_params.foto_blobs << photo_with_valid_params
@@ -137,7 +131,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'User validations tests' do
+  describe 'User validations tests' do
    
     after(:each) do
       subject.destroy
@@ -153,11 +147,11 @@ RSpec.describe User, type: :model do
       subject { user_with_valid_params }
 
       it 'should returns valid subject' do
-        expect(subject.valid?).to be_truthy
+        expect(subject).to be_valid
       end
     end
 
-    describe 'first name validations' do
+    describe '#first_name' do
       context 'When first name is not present' do
 
         subject { described_class.new(last_name: 'Smith', birth: '1990-01-01', sex: 'Man',
@@ -169,8 +163,10 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(attribute: :first_name)
         end
       end
 
@@ -185,13 +181,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :too_long)
         end
       end
     end
 
-    describe 'Last name validations' do
+    describe '#Last_name' do
       context 'When Last name has more than 50 characters' do
         
         subject { described_class.new(first_name: 'Alex', last_name: ('Smith' * 11), birth: '1990-01-01', sex: 'Man', 
@@ -202,13 +200,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :too_long)
         end
       end
     end
   
-    describe 'Sex validations' do
+    describe '#Sex' do
       context 'When sex is not present' do
         
         subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', yourself: 'sdads',
@@ -219,13 +219,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(attribute: :sex)
         end
       end
     end
 
-    describe 'latitude validations' do
+    describe '#latitude' do
       context 'When latitude is not present' do
         
         subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
@@ -236,13 +238,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(attribute: :latitude)
         end
       end
     end
 
-    describe 'birth validations' do
+    describe '#birth' do
       context 'When birth is not present' do
         
         subject { described_class.new(first_name: 'Alex', last_name: 'Smith', sex: 'Man', yourself: 'sdads',
@@ -253,14 +257,16 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(2)
+          expect(subject.errors.first).to have_attributes(attribute: :birth)
         end
       end
   
-      context 'When the birth is earlier than Time.zone.today - 18.years + 1.day' do
+      context 'When the birth is earlier than Time.zone.today - 18.years (user under 18)' do
         
-        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '2990-01-01', sex: 'Man', 
+        subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: Time.zone.today - 18.years + 1, sex: 'Man', 
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
@@ -268,8 +274,10 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :less_than)
         end
       end
   
@@ -283,13 +291,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :greater_than)
         end
       end
     end
 
-    describe 'yourself validations' do
+    describe '#yourself' do
       context 'When yourself has more than 255 characters' do
         
         subject { described_class.new(first_name: 'Alex', last_name: 'Smith', birth: '1990-01-01', sex: 'Man', 
@@ -301,8 +311,10 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :too_long)
         end
       end
   
@@ -316,13 +328,15 @@ RSpec.describe User, type: :model do
           subject.save
         end
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: "includes forbidden words")
         end
       end
     end
 
-    describe 'foto validations' do
+    describe '#foto' do
       context 'When foto is not present' do
         before(:each) do 
           user_with_valid_params.save
@@ -330,8 +344,10 @@ RSpec.describe User, type: :model do
 
         subject {user_with_valid_params}
         
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(attribute: :foto)
         end
       end
 
@@ -344,8 +360,10 @@ RSpec.describe User, type: :model do
 
         subject {user_with_valid_params}
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :file_size_out_of_range)
         end
       end
 
@@ -358,8 +376,10 @@ RSpec.describe User, type: :model do
 
         subject {user_with_valid_params}
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :content_type_invalid)
         end
       end
 
@@ -382,8 +402,10 @@ RSpec.describe User, type: :model do
 
         subject {user_with_valid_params}
 
-        it 'should returns invalid subject' do
-          expect(subject.valid?).to be_falsey
+        it 'is invalid' do
+          expect(subject).not_to be_valid
+          expect(subject.errors.count).to eq(1)
+          expect(subject.errors.first).to have_attributes(type: :limit_out_of_range)
         end
       end
     end
