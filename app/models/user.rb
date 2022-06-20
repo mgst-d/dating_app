@@ -3,9 +3,9 @@ Rails.application.config.active_record.belongs_to_required_by_default = false
 # this is User model
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :validatable, :async
   has_many_attached :foto
   has_many :hobby_users, dependent: :destroy
   has_many :hobbies, through: :hobby_users

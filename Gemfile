@@ -32,7 +32,7 @@ gem 'jbuilder'
 
 # Authentication
 gem 'devise'
-
+gem 'devise-async'
 # Photo validations
 gem 'active_storage_validations'
 
