@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    confirmations: 'confirmations'
+    confirmations: 'users/confirmations'
   }
 
   devise_scope :user do  
