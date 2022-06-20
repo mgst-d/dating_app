@@ -2,6 +2,7 @@
 <div class="main-content-reg">
 <h2>Log in</h2>
 <h5 style="color:#ff0000" class="notice"><%= alert %></h5>
+<h5 style="color:#008B8B" class="notice"><%= notice %></h5>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
