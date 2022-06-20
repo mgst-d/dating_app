@@ -18,7 +18,7 @@ class UsersGenerator
   end
 
   def self.generate_new_session_users_id_list(current_user, session, list_size)
-    session[:users_id] = User.where.not(sex: current_user.sex).shuffle.pluck(:id)[0..list_size - 1]
+    session[:users_id] = User.where.not(sex: current_user.sex).limit(list_size).shuffle.pluck(:id)
     session[:count] = -1
   end
 end
