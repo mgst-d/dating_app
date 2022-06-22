@@ -50,3 +50,11 @@ footer {
   border: solid 2px black;
   margin: 5px 0;
 }
+
+@media screen and (max-width: 800px){
+
+  .body-wrapper {
+    padding: 0;
+  }
+
+}

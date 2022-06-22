@@ -3,9 +3,9 @@ header {
   // -moz-box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
   // box-shadow: 5px 5px 5px -2px rgba(34, 60, 80, 0.6) inset;
   min-height: 100px;
-  background-color: #fff;
+  background-color: #fca7bb;
   // border: solid 10px #ee2a7b;
-  border-radius: 22px 22px 0 0 ;
+  border-radius: 22px 22px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,15 +29,27 @@ header {
   /* 100% {transform: rotate(0deg);} */
 }
 
-.header-logo img {
-  width: 50px;
-  height: 50px;
-  margin: 0 40px;
-  transform-origin: 50% 100%;
-  animation-name: fly, slide;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
+.header-logo {
+    animation-name: fly, slide;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    border-radius: 50%;
+    background: white;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
+    z-index: 10;
+
+  img {
+    width: 50px;
+    height: 50px;
+    transform-origin: 50% 100%;
+
+  }
 }
 
 header nav {
@@ -85,4 +97,12 @@ header {
   100% {
     transform: rotate(360deg);
   }
+}
+
+@media screen and (max-width: 800px){
+
+  header {
+    border-radius: 0;
+  }
+
 }

@@ -1,5 +1,5 @@
 <div>
-  <%= f.label :first_name, style: "display: block" %>
+  <%= f.label :first_name, style: "display: block", class: "important-field" %>
   <%= f.text_field :first_name %>
 </div>
 
@@ -9,12 +9,12 @@
 </div>
 
 <div>
-  <%= f.label :birth, style: "display: block" %>
+  <%= f.label :birth, style: "display: block", class: "important-field" %>
   <%= f.date_select :birth, { start_year: Date.today.year, end_year: Date.today.year - 122} %>
 </div>
 
 <div>
-  <%= f.label :sex, style: "display: block" %>
+  <%= f.label :sex, style: "display: block", class: "important-field"  %>
   <%= f.radio_button :sex, 'Male' %>
   <%= f.label :sex, 'Male' %>
   <%= f.radio_button :sex, 'Female' %>
@@ -49,6 +49,6 @@
 </div>
 
 <div>
-  <%= f.label :foto, style: "display: block" %>
+  <%= f.label :foto, style: "display: block", class: "important-field" %>
   <%= f.file_field :foto, multiple: true, class: 'add-foto-form action-button shadow animate red' %>
 </div>
