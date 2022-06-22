@@ -270,6 +270,24 @@ main {
   transform: rotate(90deg);
 }
 
+.container__helper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+
+  & > * {
+    margin-bottom: 10px;
+  }
+
+  .actions input{
+    margin-left: 0;
+  }
+}
+
 @media screen and (max-width: 800px){
   .main-menu {
     display: none;
