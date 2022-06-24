@@ -24,8 +24,7 @@ RSpec.describe User, type: :model do
   describe 'Users initialize tests' do
   
     before(:each) do
-      user_with_valid_params.foto_blobs << photo_with_valid_params
-      user_with_valid_params.save
+      create_user(user_with_valid_params, photo_with_valid_params)
     end
 
     subject { user_with_valid_params }
@@ -140,8 +139,7 @@ RSpec.describe User, type: :model do
     context 'When all params OK' do
 
       before(:each) do
-        user_with_valid_params.foto_blobs << photo_with_valid_params
-        user_with_valid_params.save
+        create_user(user_with_valid_params, photo_with_valid_params)
       end
   
       subject { user_with_valid_params }
@@ -159,8 +157,7 @@ RSpec.describe User, type: :model do
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -177,8 +174,7 @@ RSpec.describe User, type: :model do
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -196,8 +192,7 @@ RSpec.describe User, type: :model do
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -215,8 +210,7 @@ RSpec.describe User, type: :model do
                                       latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', 
                                       work_id: 5, password: 'dsdfss')}
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -234,8 +228,7 @@ RSpec.describe User, type: :model do
                                       yourself: 'sdads', longitude: 53.905427341494146, email: 'Ti@mail.ru', 
                                       work_id: 5, password: 'dsdfss') }
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -253,8 +246,7 @@ RSpec.describe User, type: :model do
                                       latitude: 27.53037290421605, longitude: 53.905427341494146, email: 'Ti@mail.ru', 
                                       work_id: 5, password: 'dsdfss') }
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -270,8 +262,7 @@ RSpec.describe User, type: :model do
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -287,8 +278,7 @@ RSpec.describe User, type: :model do
                                       yourself: 'sdads', latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -307,8 +297,7 @@ RSpec.describe User, type: :model do
                                       longitude: 53.905427341494146, email: 'Ti@mail.ru', work_id: 5, 
                                       password: 'dsdfss') }
         before(:each) do  
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do
@@ -324,8 +313,7 @@ RSpec.describe User, type: :model do
                                       yourself: 'fuck', latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Ti@mail.ru', work_id: 5, password: 'dsdfss') }
         before(:each) do  
-          subject.foto_blobs << photo_with_valid_params
-          subject.save
+          create_user(subject, photo_with_valid_params)
         end
 
         it 'is invalid' do

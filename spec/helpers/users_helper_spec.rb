@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersHelper, type: :helper do
   
     before(:each) do
-      user_with_valid_params.foto_blobs << photo_with_valid_params
-      user_with_valid_params.save
+      create_user(user_with_valid_params, photo_with_valid_params)
     end
   
   describe "#full_name" do
