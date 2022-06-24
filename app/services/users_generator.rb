@@ -10,7 +10,7 @@ class UsersGenerator
   end
 
   def self.users_id_list_is_nil_or_count_is_full?(current_user, session)
-    !current_user.nil? && (session[:users_id].blank? || ((session[:count]) + 1) == session[:users_id].size)
+    !current_user.nil? && (session[:users_id].blank? || ((session[:count]) + 1) >= session[:users_id].size)
   end
 
   def self.are_there_suitable_users?(current_user, session)
