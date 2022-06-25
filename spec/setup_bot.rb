@@ -2,6 +2,7 @@ module SetupBot
 	def create_user(user, photo)
 		user.foto_blobs << photo 
 		user.save
+		user
 	end
 	
 	def create_3_users(current_user, user2, user3, photo)

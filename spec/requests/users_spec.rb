@@ -43,29 +43,26 @@ RSpec.describe "/users", type: :request do
       longitude: 53.905427341494146, email: 'Ti@mail.ru', password: 'dsdfss'} }
   let(:invalid_attributes) { {first_name: ('Alexa' * 11), birth: Date.new(1990,01,01), sex: 'Man', latitude: 27.53037290421605,
       longitude: 53.905427341494146, email: 'Ti@mail.ru', password: 'dsdfss'} }
+  let(:new_user) { create_user(user_with_valid_attributes, photo_with_valid_attributes) }
 
       describe "GET /index" do
     it "renders a successful response" do
-      user = user_with_valid_attributes
-      user.foto_blobs << photo_with_valid_attributes
-      user.save
-      get users_url(user)
+      get users_url(new_user)
       expect(response).to be_successful
     end
   end
 
   describe "GET /show" do
     it "renders a successful response" do
-      user = User.create!(valid_attributes)
 
       # login(user)
       # # user.foto_blobs << photo_with_valid_attributes
       # # user.save
       # login_as(user, scope: :user)
       # login(user)
-      sign_in(user)
-      get user_path(user)
-      expect(response).to redirect_to(user_url(user))
+      sign_in(new_user)
+      get user_path(new_user)
+      expect(response).to redirect_to(new_user)
     end
   end
 
@@ -78,34 +75,32 @@ RSpec.describe "/users", type: :request do
 
   describe "GET /matches" do
     it "renders a successful response" do
-      user = user_with_valid_attributes
-      user.foto_blobs << photo_with_valid_attributes
-      user.save
-      get matches_user_path(user)
+      get matches_user_path(new_user)
       expect(response).to be_successful
     end
   end
 
   describe "GET /edit" do
     it "renders a successful response" do
-      user = user_with_valid_attributes
-      user.foto_blobs << photo_with_valid_attributes
-      user.save
-      get edit_user_registration_path(user)
+      get edit_user_registration_path(new_user)
       expect(response).to be_successful
     end
   end
 
   describe "POST /create" do
+
     context "with valid parameters" do
+      
       it "creates a new User" do
         expect {
-          post users_url, params: { user: valid_attributes }
+          new_user
+          binding.irb
+          post users_url, params: { user: new_user.as_json }
         }.to change(User, :count).by(1)
       end
 
       it "redirects to the root page" do
-        post users_url, params: { user: valid_attributes }
+        post users_url, params: { user: new_user.as_json }
         expect(response).to redirect_to(root_path)
       end
     end
