@@ -1,4 +1,6 @@
-RSpec.describe "/users", type: :request do
+require 'rails_helper'
+
+RSpec.describe "/likes", type: :request do
 
   let(:photo_with_valid_attributes) { ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', content_type: 'image/jpeg', byte_size: 299946)}
   let(:user_with_valid_attributes) { User.new(first_name: 'Alex', birth: Date.new(1990,01,01), sex: 'Man', 
@@ -12,21 +14,16 @@ RSpec.describe "/users", type: :request do
     create_user(user2_with_valid_attributes, photo_with_valid_attributes)
   end
 
-  after(:each) do
-    user_with_valid_attributes.destroy
-    user2_with_valid_attributes.destroy
-  end
-  
   describe "POST /create" do
 
     it "creates new like" do
       expect {
-        post create_like_path, params: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes }
+        post create_like_path, params: { like: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes } }
       }.to change(Like, :count).by(1)
     end
 
     it "redirects to the root page" do
-      post create_like_path, params: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes }
+      post create_like_path, params: { like: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes } }
       expect(response).to redirect_to(root_path)
     end
   end
@@ -35,12 +32,12 @@ RSpec.describe "/users", type: :request do
 
     it "destroys like" do
       expect {
-        delete destroy_like, params: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes }
+        delete destroy_like_path(liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes)
       }.to change(Like, :count).by(-1)
     end
 
-    it "redirects to the users list" do
-      delete destroy_like, params: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes }
+    it "redirects to the root page" do
+      delete destroy_like_path(liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes)
       expect(response).to redirect_to(root_path)
     end
   end
