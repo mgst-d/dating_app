@@ -9,5 +9,6 @@ module SetupBot
 		create_user(current_user, photo)
 		create_user(user2, photo)
 		create_user(user3, photo)
+		true
 	end
 end

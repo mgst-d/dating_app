@@ -45,7 +45,7 @@ RSpec.describe "/users", type: :request do
       longitude: 53.905427341494146, email: 'Ti@mail.ru', password: 'dsdfss'} }
   let(:new_user) { create_user(user_with_valid_attributes, photo_with_valid_attributes) }
 
-      describe "GET /index" do
+  describe "GET /index" do
     it "renders a successful response" do
       get users_url(new_user)
       expect(response).to be_successful
