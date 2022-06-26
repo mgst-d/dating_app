@@ -30,6 +30,8 @@ class UsersController < ApplicationController
     end
   end
 
+  def about; end
+
   private
 
   def acces_to_profile?

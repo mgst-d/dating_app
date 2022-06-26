@@ -1,6 +1,6 @@
 # This method could redirect you to 'show' page
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :about]
 
   def index; end
 
