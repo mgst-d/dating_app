@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :participants, dependent: :destroy
   has_many :rooms, through: :participants
+  has_many :notifications, dependent: :destroy, as: :recipient
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, length: { maximum: 50 }

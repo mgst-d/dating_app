@@ -35,12 +35,28 @@ geolocate.on('geolocate', function() {
 
 <% @current_user_matches.each_with_index do |user, ind| %>
 
+<% users = [user, current_user].sort %>
+<% room_name = "private_#{users[0].id}_#{users[1].id}" %>
+<% single_room = Room.find_by(name: room_name) || Room.create_private_room([user, current_user], room_name) %>
+<% unread = single_room.notifications_as_room.where(type: MessageNotification.name, recipient: user).unread %>
+          
+<% if unread.count > 0 %>
+  <% number = "+#{unread.count}" %>
+<% else %>
+  <% number = ''%>
+<% end %>
+
 var longitude = JSON.parse("<%= j user[:longitude]%>")
 var latitude = JSON.parse("<%= j user[:latitude]%>")
 var nameUser = "<%= j user[:first_name]%>"
+<% unless number == ''%>
+var marker_test = new mapboxgl.Marker({color: "#FF0000"})
+<% else %>
 var marker_test = new mapboxgl.Marker()
+<% end %>
 .setLngLat([latitude,longitude])
 .setPopup(new mapboxgl.Popup().setHTML(`
+
 <div class="fotoUser">
 <button type="button" class="user-name-popup btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<%=ind%>" onclick="createModal(<%=ind%>)">
   ${nameUser}
@@ -58,7 +74,7 @@ var marker_test = new mapboxgl.Marker()
       </div>
       <div class="modal-footer">
         <button type="button" class="action-button shadow animate red" data-bs-dismiss="modal">Close</button>
-        <%= link_to 'Chat', user, class: 'action-button shadow animate green'%>
+        <%= link_to "Chat#{number}", user, class: 'action-button shadow animate green'%>
         <%= link_to 'Dislike', destroy_like_path(liker_id: current_user, likee_id: user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'action-button shadow animate yellow'%> 
       </div>
     </div>
@@ -102,5 +118,3 @@ function createModal(num){
   })
 }
 </script>
-
-
