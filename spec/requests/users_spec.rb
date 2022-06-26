@@ -44,6 +44,13 @@ RSpec.describe "/users", type: :request do
       end
     end
 
+    describe "GET /about" do
+      it "renders a successful response" do
+        get about_path
+        expect(response).to be_successful
+      end
+    end
+
     describe "GET /edit" do
       it "gets status 401 Unauthorized" do
         get edit_user_registration_path(user)
@@ -109,6 +116,13 @@ RSpec.describe "/users", type: :request do
     describe "GET /matches" do
       it "renders a successful response" do
         get matches_user_path(user)
+        expect(response).to be_successful
+      end
+    end
+
+    describe "GET /about" do
+      it "renders a successful response" do
+        get about_path
         expect(response).to be_successful
       end
     end
