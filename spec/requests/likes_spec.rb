@@ -10,26 +10,31 @@ RSpec.describe "/likes", type: :request do
   let(:user2_with_valid_attributes) { User.new(first_name: 'Dasha', birth: Date.new(1990,01,01), sex: 'Female', 
                                       latitude: 27.53037290421605, longitude: 53.905427341494146, 
                                       email: 'Timomyy@mail.ru', password: 'dsdfss') }
+
   before(:each) do
     create_user(user_with_valid_attributes, photo_with_valid_attributes)
     create_user(user2_with_valid_attributes, photo_with_valid_attributes)
+    login_as(user_with_valid_attributes, run_callbacks: false)
   end
 
   describe "POST /create" do
 
     it "creates new like" do
       expect {
-        post create_like_path, params: { like: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes } }
+        post create_like_path, params: { liker_id: user_with_valid_attributes.id, likee_id: user2_with_valid_attributes.id } 
       }.to change(Like, :count).by(1)
     end
 
     it "redirects to the root page" do
-      post create_like_path, params: { like: { liker_id: user_with_valid_attributes, likee_id: user2_with_valid_attributes } }
+      post create_like_path, params: { like: { liker_id: user_with_valid_attributes.id, likee_id: user2_with_valid_attributes.id } }
       expect(response).to redirect_to(root_path)
     end
   end
   
   describe "DELETE /destroy" do
+    before(:each) do
+      Like.create(liker_id: user_with_valid_attributes.id, likee_id: user2_with_valid_attributes.id)
+    end
 
     it "destroys like" do
       expect {
