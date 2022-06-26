@@ -1,0 +1,24 @@
+.about-us {
+  background-color: #fff;
+  width: 90%;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 3px 3px 15px black;
+
+  a {
+    text-decoration: none;
+    color: #212529;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .contributors,
+  .mentor {
+    border: solid #8b8b8b 2px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+}
