@@ -1,6 +1,5 @@
 # This is UserController
 class UsersController < ApplicationController
-  
   def index
     @user = UsersGenerator.call(current_user, session)
   end
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id]) if user_exist?
       @message = Message.new
       @room_name = get_name(@user, current_user)
-      @single_room = Room.find_by(name: @room_name) || Room.create_private_room([@user, current_user], @room_name)
+      @single_room = room_create(@room_name, @user)
       set_notifications_to_read
       render 'rooms/index' if @user != current_user
     else
@@ -49,6 +48,10 @@ class UsersController < ApplicationController
 
   def set_notifications_to_read
     notifications = @single_room.notifications_as_room.where(recipient: @user).unread
-    notifications.update_all(read_at: Time.zone.now)
+    notifications.update_all(read_at: Time.zone.now) # rubocop:disable Rails/SkipsModelValidations
+  end
+
+  def room_create(room_name, user)
+    Room.find_by(name: room_name) || Room.create_private_room([user, current_user], room_name)
   end
 end

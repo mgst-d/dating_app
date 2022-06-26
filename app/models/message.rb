@@ -16,8 +16,9 @@ class Message < ApplicationRecord
   end
 
   private
+
   def notify_recipient
-      notification = MessageNotification.with(message: self, room: self.room)
-      notification.deliver_later(user)
+    notification = MessageNotification.with(message: self, room: room)
+    notification.deliver_later(user)
   end
 end
