@@ -1,5 +1,4 @@
 require 'rails_helper'
-# require './app/controllers/users_controller'
 
 RSpec.describe "/users", type: :request do
 
