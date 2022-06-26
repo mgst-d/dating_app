@@ -1,0 +1,28 @@
+<div class="about-us">
+  <h1 class="mb-4">EpamLab 2022 (Modern web application development with Ruby & Ruby on Rails)</h1>
+  <div class="contributors">
+    <h2>Contributors:</h2>
+    <ul class="contributor-list">
+    </ul>
+  </div>
+  <div class="mentor">
+    <h2>Mentor: <%= link_to "Ihar", "https://telegram.me/telegrxxm", target: "_blank"%> </h2>
+  </div>
+</div>
+<script>
+  var info = [
+    {name: "Aleksei Zhuchkov", link: "https://github.com/kelzerock"},
+    {name: "Siarhei Pratasevich", link: "https://github.com/Timemanchik"},
+    {name: "Andrey Shynkarou", link: "https://github.com/mgst-d"}
+  ]
+
+  var random = Math.floor(Math.random() * 3);
+  var divElem = document.querySelector('.contributor-list');
+  for(let i = 0; i < info.length; i++){
+    let newItem =  document.createElement('li');
+    newItem.innerHTML = `<a href="${info[random].link}" target="_blank"><h2>${info[random].name}</h2></a>`;
+    divElem.prepend(newItem);
+    random++;
+    if(random === info.length) random = 0;
+  }
+</script>
