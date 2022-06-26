@@ -20,7 +20,7 @@ RSpec.describe "Messages", type: :request do
       room = Room.create_private_room(users, "private_#{users.sort[0].id}_#{users.sort[1].id}")
       expect {
         post room_messages_path(room.id), params: { message: { user_id: user_with_valid_attributes.id, room_id: room.id, body: 'dfsddfg' }}
-      }.to change(user_with_valid_attributes.messages, :count).by(1)
+      }.to change(Message, :count).by(1)
     end
   end
 end
