@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore simplecov
+/coverage/
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -26,6 +29,9 @@
 !/tmp/storage/.keep
 
 /public/assets
+
+# Ignore Google Cloud key
+/config/secrets/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

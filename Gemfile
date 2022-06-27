@@ -9,6 +9,9 @@ gem 'rails', '~> 7.0.2', '>= 7.0.2.4'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+# Use font-icon
+gem 'font-awesome-rails'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -27,8 +30,21 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+# Authentication
+gem 'devise'
+gem 'devise-async'
+# Photo validations
+gem 'active_storage_validations'
+
+# Filter forbidden words for 'yourself'
+gem 'profanity-filter', '~> 1.0'
+
+# Code coverage for Ruby
+gem 'simplecov', '~> 0.21.2'
+
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem 'noticed'
+gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -43,10 +59,13 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem 'sassc-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
+
+# Google Cloud
+gem 'google-cloud-storage', '~> 1.11', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -54,6 +73,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-mocks'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do

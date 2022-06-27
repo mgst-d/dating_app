@@ -1,0 +1,74 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong>Name:</strong>
+    <%= full_name(user) %>
+  </p>
+  
+  <div id="carouselExampleInterval-main" class="carousel slide carousel-dark"      data-interval="false">
+      <div class="carousel-inner">
+        <% user.foto.each_with_index do |foto, index| %>
+        <%active = index == 0? "active" : ""%>
+        <div class="carousel-item <%=active%>" >
+          <%= image_tag foto, class: "carousel-foto"%>
+        </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval-main" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <br>
+  
+  <p>
+    <strong>Age:</strong>
+    <%= age(user) %>
+  </p>
+
+  <p>
+    <strong>Sex:</strong>
+    <%= user.sex %>
+  </p>
+  
+  <% unless user.work.blank? %>
+    <p>
+      <strong>Work:</strong>
+      <%= user.work.title %>
+    </p>
+  <% end %>
+
+  <% unless user.yourself.blank? %>
+    <p>
+      <strong>About me:</strong>
+      <%= user.yourself %>
+    </p>
+  <% end %>
+
+  <% unless user.hobbies.blank? %>
+    <p>
+      <strong>Hobbies:</strong>
+      <% user.hobbies.each do |hobby| %>
+        <% if user.hobbies.last == hobby %>
+          <%= "#{hobby.title}" %>
+        <% else %>
+          <%= "#{hobby.title}, " %>
+        <% end %>
+      <% end %> 
+    </p>
+  <% end %>  
+
+  <p class="hidden-item">
+    <strong>Latitude:</strong>
+    <%= user.latitude %>
+  </p>
+
+  <p class="hidden-item">
+    <strong>Longitude:</strong>
+    <%= user.longitude %>
+  </p>
+  
+</div>

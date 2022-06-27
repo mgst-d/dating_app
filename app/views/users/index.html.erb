@@ -1,0 +1,41 @@
+    <div class="main-content main-content-index">
+      
+      <% if !user_signed_in? %>
+        <h3 style="color:#008B8B" class="notice"><%= notice %></h3>
+        <h1>Tau-app <br>Find your love</h1>
+        <p class="description-text">  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia rem labore nam adipisci maiores, cumque sapiente voluptate neque. Obcaecati quasi fuga incidunt beatae totam quidem adipisci, quos esse eaque, dignissimos amet? Eos, illum excepturi! Aspernatur excepturi vel quas deserunt sapiente similique quod saepe dolorem error, fugiat incidunt recusandae libero dolor, provident velit magnam voluptatem totam. Quidem voluptate in doloremque molestias excepturi!</p>
+      <% end %>
+      <% if user_signed_in? && !@user.nil? %>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+          <div class="carousel-inner">
+                <%@user.foto.each_with_index do |foto, index|%>
+                <% if index == 0 %>
+                <div class="carousel-item active">
+                <% else %>
+                <div class="carousel-item">
+                <% end %>
+                  <%= image_tag(foto, class: "d-block") %>
+                </div>
+                <%end%>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="swipe-button">
+          <%= link_to 'Dislike', destroy_like_path(liker_id: current_user, likee_id: @user), data: { turbo_method: :delete }, class: 'action-button shadow animate yellow cicle-button' %> 
+          <%= link_to 'Like', create_like_path(liker_id: current_user, likee_id: @user), data: { turbo_method: :post }, class: 'action-button shadow animate red cicle-button' %> 
+        </div>
+      <% elsif user_signed_in? && @user.nil? %>
+        <h1>Sorry :( <br>No People Found</h1> 
+      <% end %>
+    <% if !user_signed_in? %>
+      <div class="container_big-button" align="center">
+        <button class="big-button" data-action="submit" onclick="document.location.href = '<%=new_user_registration_path%>';">Find your love!<br> Push the button!</button>
+      </div>
+    <% end %>

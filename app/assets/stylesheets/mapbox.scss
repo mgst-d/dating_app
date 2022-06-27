@@ -1,0 +1,45 @@
+.fotoUser {
+  width: 140px;
+  height: 190px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .user-name-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    // flex: 1 1 30px;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: solid;
+    border-radius: 23px;
+    outline: none;
+    margin-bottom: 5px;  
+  }
+}
+
+// foto
+.carousel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #b9b9b9;
+  flex: 1 1 140px;
+  max-height: 140px;
+
+  .carousel-inner {
+    .active {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
+    .carousel-foto {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

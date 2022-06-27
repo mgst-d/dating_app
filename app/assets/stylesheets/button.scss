@@ -1,0 +1,57 @@
+.animate {
+  transition: all 0.01s;
+  -webkit-transition: all 0.01s;
+}
+
+.action-button {
+  position: relative;
+  padding: 10px 20px;
+  margin: 10px;
+  float: left;
+  border-radius: 10px;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  height: 50px;
+
+  &:active {
+    transform: translate(0px, 1px);
+    -webkit-transform: translate(0px, 1px);
+    border-bottom: 0px solid;
+  }
+}
+
+.cicle-button {
+  height: 100px;
+  border-radius: 50%;
+}
+
+.blue {
+  background-color: #3498db;
+  border-bottom: 4px solid #2980b9;
+  text-shadow: 0px -2px #2980b9;
+}
+
+.red {
+  background-color: #da2965;
+  border-bottom: 4px solid #a11753;
+  text-shadow: 0px -2px #bd3e31;
+}
+
+.green {
+  background-color: #82bf56;
+  border-bottom: 4px solid #669644;
+  text-shadow: 0px -2px #669644;
+}
+
+.yellow {
+  background-color: #f2cf66;
+  border-bottom: 4px solid #d1b358;
+  text-shadow: 0px -2px #d1b358;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: #b46680;
+}
