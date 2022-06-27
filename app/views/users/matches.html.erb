@@ -74,7 +74,7 @@ var marker_test = new mapboxgl.Marker()
       </div>
       <div class="modal-footer">
         <button type="button" class="action-button shadow animate red" data-bs-dismiss="modal">Close</button>
-        <%= link_to "Chat", user, class: 'action-button shadow animate green'%>
+        <%= link_to 'Chat', user, class: 'action-button shadow animate green'%>
         <%= link_to 'Dislike', destroy_like_path(liker_id: current_user, likee_id: user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'action-button shadow animate yellow'%> 
       </div>
     </div>
