@@ -6,6 +6,8 @@ class Room < ApplicationRecord
   has_many :participants, dependent: :destroy
   has_many :users, through: :participants
 
+  has_noticed_notifications model_name: 'Notification'
+
   def broadcast_if_public
     broadcast_append_to 'rooms' unless is_private
   end
