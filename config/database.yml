@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: dating_app_development
+  database: dating_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: developer
+  username: mgst
 
   # The password associated with the postgres role (username).
   password: 12345678
@@ -41,7 +41,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: dating_app_test
+  database: dating_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: dating_app_production
-  username: dating_app
+  database: dating_production
+  username: dating
   password: <%= ENV["DATING_APP_DATABASE_PASSWORD"] %>
