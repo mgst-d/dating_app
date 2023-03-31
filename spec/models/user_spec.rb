@@ -13,7 +13,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:likers)}
     it { should have_many(:messages)}  
     it { should have_many(:participants)}  
-    it { should have_many(:rooms)}  
+    it { should have_many(:rooms)}
+    it { should have_one(:profile)}
   end
 
   let(:photo_with_valid_params) { ActiveStorage::Blob.new(filename: 'foto', checksum: 'sadasd', content_type: 'image/jpeg', byte_size: 299946)}
